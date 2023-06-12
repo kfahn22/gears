@@ -1,2 +1,2 @@
-# gears
-P5 sketches with visualizations of gears 
+# P5 sketches with visualizations of gears 
+
