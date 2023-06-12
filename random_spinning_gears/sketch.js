@@ -31,8 +31,7 @@ function setup() {
 function draw() {
   colorMode(RGB);
   background(0);
-  rotateZ(angle);
-  translate(-width / 2, -height / 2);
+  rotate(angle);
   for (let i = 0; i < knobs.length; i++) {
     knobs[i].oneCurve();
     knobs[i].show(angle);

@@ -31,10 +31,7 @@ function setup() {
 function draw() {
   colorMode(RGB);
   background(0);
-  //rotateX(angle);
-  // rotateY(angle);
-  rotateZ(angle); // only use this if you want 2D rotating gear
-  translate(-width / 2, -height / 2);
+  rotate(angle);
   for (let i = 0; i < gcurve.length; i++) {
     gcurve[i].oneCurve();
     gcurve[i].show(angle);

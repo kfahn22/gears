@@ -29,8 +29,7 @@ class Gear {
         (1 / this.b) * this.hyperbolicTan(this.b * sin(this.sp * theta));
       let x = this.sc * r * sin(theta);
       let y = this.sc * r * cos(theta);
-      let z = -1;
-      let p = createVector(x, y, z);
+      let p = createVector(x, y);
 
       if (this.points.length < 361) {
         this.points[theta] = p;
@@ -40,17 +39,15 @@ class Gear {
     }
   }
 
-  show(angle) {
+  show() {
     push();
     noFill();
-    translate(this.px, this.py);
-    //rotate(angle);
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       strokeWeight(2);
       stroke(this.col);
       let v = this.points[i];
-      vertex(v.x, v.y, v.z);
+      vertex(v.x, v.y);
     }
     endShape();
     pop();

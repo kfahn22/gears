@@ -43,8 +43,6 @@ class Gear {
     let fr = 361 % this.sp;
     push();
     noFill();
-    translate(this.px, this.py);
-    rotate(angle);
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       strokeWeight(2.5);
