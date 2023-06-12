@@ -41,11 +41,9 @@ class Gear {
     }
   }
 
-  show(rot) {
+  show() {
     push();
     noFill();
-    translate(this.px, this.py);
-    rotate(this.rot);
     beginShape();
     for (let v of this.points) {
       strokeWeight(1);

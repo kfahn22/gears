@@ -8,6 +8,7 @@ let a = 1;
 let b = 10;
 let sc = 80;
 let n = 100;
+let angle = 0;
 
 function setup() {
   createCanvas(400, 400);
@@ -40,10 +41,13 @@ function setup() {
 
 function draw() {
   background(15, 16, 32);
+  translate(width / 2, height / 2);
+  rotate(angle);
   for (let i = 0; i < gcurve.length; i++) {
     gcurve[i].oneCurve();
     gcurve[i].show();
   }
+  angle += 1;
 }
 
 function mousePressed() {
