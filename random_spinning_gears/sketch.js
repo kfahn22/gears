@@ -7,8 +7,13 @@ const knobs = [];
 const num = 10;
 let angle = 0;
 const spokes = 8; // number of spokes on the gears
-const sc = 10;
-
+const sc = 30;
+let colors = [
+  [93,81,121],
+  [79,117,155],
+  [146,201,177],
+  [162, 250, 163]
+]
 function setup() {
   createCanvas(600, 600, WEBGL);
   angleMode(DEGREES);
@@ -22,15 +27,14 @@ function setup() {
         random(10),
         spokes,
         sc + 10 * i,
-        color(random(100, 255), 100, random(200, 255))
+        random(colors)
       )
     );
   }
 }
 
 function draw() {
-  colorMode(RGB);
-  background(0);
+  background(97,31,78);
   rotate(angle);
   for (let i = 0; i < knobs.length; i++) {
     knobs[i].oneCurve();

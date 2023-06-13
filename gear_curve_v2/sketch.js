@@ -22,7 +22,7 @@ function setup() {
     let perc = (5 * i) / sc; // adjustment so distance between gears increases
     //let col = color(200, 100, 0 + 7 * i);
     sw = strokeWeight(0.1 + 0.05 * i);
-    let col = color(200, 50, 200, 220 + i * 1);
+    let col = color(146, 201, 177, 220 + i * 1);
     gcurve.push(
       new Gear(width / 2, height / 2, a, b, spokes, sc + perc * i, col, sw)
     );
@@ -30,8 +30,7 @@ function setup() {
 }
 
 function draw() {
-  colorMode(RGB);
-  background(0);
+  background(87, 31, 78);
   translate(width / 2, height / 2);
   rotate(angle);
   for (let i = 0; i < gcurve.length; i++) {

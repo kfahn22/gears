@@ -17,7 +17,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(87, 31, 78);
   rotateX(angX);
   rotateY(angY);
 
