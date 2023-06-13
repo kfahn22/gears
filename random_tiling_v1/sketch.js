@@ -35,6 +35,7 @@ function draw() {
 
   let w = width / 5;
   noFill();
+
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       let cx = -w + i * w + w / 2;

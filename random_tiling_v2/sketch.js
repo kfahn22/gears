@@ -8,7 +8,7 @@ const gcurve = [];
 // a, b are parameters to the function to calculate radius
 const a = 1;
 const b = 10;
-const m = 4; // number of spokes
+const m = 6; // number of spokes
 let angle = 0;
 const w = 50;
 let cols;
@@ -19,6 +19,7 @@ const Y_AXIS = 1;
 const X_AXIS = 2;
 
 function setup() {
+  //createCanvas(1000, 500);
   createCanvas(500, 500);
   cols = floor(width / w) - 1;
   rows = floor(height / w) - 1;
@@ -31,10 +32,10 @@ function setup() {
         height / 2,
         1,
         random(1, 10),
-        random(50, 150),
+        random(80, 160),
         30,
         col,
-        m
+        4
       )
     );
   }
@@ -43,10 +44,11 @@ function setup() {
 function draw() {
   let c1 = color(87, 31, 78);
   let c2 = color(146, 201, 177);
-  gradient = createLinearGradient(45, 700);
+  gradient = createLinearGradient(45, 900);
   gradient.colors(0, c1, 1, c2);
   backgroundGradient(gradient);
   let w = width / 5;
+  //let w = width / 10;
   noFill();
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
