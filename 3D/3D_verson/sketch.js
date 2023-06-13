@@ -1,15 +1,15 @@
 // The spherical code is based on Daniel Shiffman's 3d-supershapes challenge
 // https://thecodingtrain.com/challenges/26-3d-supershapes
-// I am not sure what this is, but it is kind of cool
-// there is a relationship between total & # of spokes 
+// This is my best attempt at creating a 3D version
+
 let angX = 0;
 let angY = 0;
 let gears = [];
 let rotation = true;
 let total = 48;
 let num;
-let sc = 90;
-let sp = 8; // number of spokes
+let sc = 150;
+let sp = 6; // number of spokes
 
 function setup() {
   createCanvas(600, 600, WEBGL);
@@ -17,25 +17,13 @@ function setup() {
 }
 
 function draw() {
-  background("#70327E");
+  background(0);
   rotateX(angX);
   rotateY(angY);
 
-  ambientLight(0, 0, 255);
-  stroke(255);
-  
-  // for (let i = 0; i < total + 1; i++) {
-  //   globe[i] = [];
-  //   const lat = map(i, 0, total, 0, PI);
-  //   for (let j = 0; j < total + 1; j++) {
-  //     const lon = map(j, 0, total, 0, TWO_PI);
-  //     const x = r * sin(lat) * cos(lon);
-  //     const y = r * sin(lat) * sin(lon);
-  //     const z = r * cos(lat);
-  //     globe[i][j] = createVector(x, y, z);
-  //   }
-  // }
-  
+  ambientLight(79, 117, 155);
+  stroke(146, 201, 177);
+
   for (let i = 0; i < total + 1; i++) {
     gears[i] = [];
     let lat = map(i, 0, total, 0, TWO_PI);
@@ -43,7 +31,7 @@ function draw() {
     for (let j = 0; j < total + 1; j++) {
       let lon = map(j, 0, total, -PI, PI);
       let r1 = gear(lon);
-      let r = gear(lat+lon);
+      let r = gear(lat + lon);
       let x = sc * r1 * cos(lon) * r2 * sin(lat);
       let y = sc * r1 * sin(lon) * r2 * sin(lat);
       let z = r + sc * (r2 * cos(lat)); // change sin(lat) to cos(lat) get two
@@ -80,7 +68,11 @@ function hyperbolicTan(theta) {
 function gear(theta) {
   let a = 1;
   let b = 10;
-  
+
   // Equation for the radius of the gear curve
   return a + (1 / b) * hyperbolicTan(b * sin(sp * theta));
+}
+
+function mousePressed() {
+  save("globe.jpg");
 }
