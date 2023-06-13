@@ -7,7 +7,6 @@ const gcurve = [];
 // a, b are parameters to the function to calculate radius
 const a = 1;
 const b = 10;
-const sc = 25; // scale
 const m = 4; // number of spokes
 let angle = 0;
 const w = 50;
@@ -26,7 +25,7 @@ function setup() {
   let col = color(255);
   for (let i = 0; i < 1; i++) {
     gcurve.push(
-      new Gear(width / 2, height / 2, a, b, random(20, 150), 30, col, m)
+      new Gear(width / 2, height / 2, 1, random(1, 10), random(50, 150), 30, col, m)
     );
   }
 }
