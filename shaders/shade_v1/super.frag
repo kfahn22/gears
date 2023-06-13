@@ -1,12 +1,3 @@
-// This file how to mix shapes 
-// This is based on the works of Inigo Quilez and Martijn Steinrucken
-
-// Another method is from Inigo Quilez 
-// https://iquilezles.org/
-
-// One method is based on tutorials by Martyn 
-// https://www.youtube.com/c/TheArtofCodeIsCool
-
 // Base code based on the Ray Marching Starting Point from the Art of Code
 // https://www.youtube.com/watch?v=PGtv-dBi2wE
 
@@ -29,11 +20,8 @@ uniform float iFrame;
 
 // Add color
 // The uvs are floating point with a range of [0.0,1.0] so we normalize by dividing by 255.
-#define PURPLE vec3(83, 29,109) / 255.
-#define RED vec3(191, 18, 97) / 255.
-#define ORANGE vec3(251,162, 100) / 255.
-#define BLUE vec3(118, 212, 229) / 255.
-#define TEAL vec3(11, 106, 136) / 255.
+#define EGGPLANT vec3(87, 31,78) / 255.
+#define OCEAN vec3(146,201,177) / 255.
 
 // Function to add color to shape using x,y,z dimensions
 vec3 colXYZ( vec3 col1, vec3 col2, vec3 col3, vec3 n)
@@ -113,13 +101,13 @@ void main( )
 	
     vec3 col = vec3(0);
   
-    col = BLUE;
+    col = OCEAN;
     // col = colorGradient(uv, BLUE, PURPLE, 0.75);
    
     float d = GearSDF(uv, 0.0, 10.0, 10.0);
     float m = 1.0 -S(0.008, 0.0, d);
     
-     col = (1.0 - m)*col + m * PURPLE;
+     col = (1.0 - m)*col + m * EGGPLANT;
   
     col = pow(col, vec3(.4545));	// gamma correction
     
