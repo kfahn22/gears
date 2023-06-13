@@ -2,7 +2,7 @@
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
 
 class Gear {
-  constructor(_px, _py, _z, _a, _b, _spokes, _sc) {
+  constructor(_px, _py, _z, _a, _b, _spokes, _sc, _num) {
     this.px = _px;
     this.py = _py;
     this.z = _z;
@@ -10,8 +10,8 @@ class Gear {
     this.b = _b;
     this.sp = _spokes;
     this.sc = _sc;
+    this.num = _num;
     this.points = [];
-    
   }
 
   hyperbolicTan(theta) {
@@ -28,7 +28,7 @@ class Gear {
         (1 / this.b) * this.hyperbolicTan(this.b * sin(this.sp * theta));
       let x = this.sc * r * sin(theta);
       let y = this.sc * r * cos(theta);
-      let z = this.sc * r * this.z;
+      let z = (this.sc / this.num) * r * this.z;
       let p = createVector(x, y, z);
 
       if (this.points.length < 361) {
@@ -39,16 +39,14 @@ class Gear {
     }
   }
 
-  show(angle) {
+  show() {
     push();
     noFill();
     translate(this.px, this.py);
-    rotate(angle);
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       strokeWeight(2);
-      let col = color(220, 100, 50, 80);
-      //let col = color(this.h[i], 100, 50, 80);
+      let col = color(87, 31, 78);
       stroke(col);
       let v = this.points[i];
       vertex(v.x, v.y, v.z);

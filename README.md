@@ -35,7 +35,7 @@ In the first version, I am rendering 120 curves with 10 spokes and a = 1, b = 10
      <tr>
       <td align="center"><a href=""> <img class="img" src="assets/3d-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>p5 sketch<br/></b></sub></a></td>
       <td align="center"><img class="img" src="assets/3d-2.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
-     <td align="center"><a href=""> <img class="img" src="" alt="" style=" display: block;
+     <td align="center"><a href=""> <img class="img" src="assets/3d-3.jpg" alt="" style=" display: block;
     margin-left: auto;
     margin-right: auto;" width="500" /><br /><sub><b><br/></b></sub></a></td>
     </tr>
