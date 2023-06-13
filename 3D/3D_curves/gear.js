@@ -11,7 +11,7 @@ class Gear {
     this.sp = _spokes;
     this.sc = _sc;
     this.points = [];
-    //this.col = color(this.h, 100, 50, 80);
+    
   }
 
   hyperbolicTan(theta) {
