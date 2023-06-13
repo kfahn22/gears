@@ -10,7 +10,7 @@ I am using the formula for the gear curve from [Wolfram Mathworld](https://mathw
 `return (l - 1) / (l + 1);`  
 `}`
 
-In the first version, I am rendering 100 curves with 10 spokes and a = 1, b = 10 (which were the parameters suggested by Mathword). In the second version, I am rendering 30 curves with 6 spokes with a and b the same. In the third version, I am rendering 10 curves with 8 spokes with random a and b. In all versions, I vary the scale of the curves.
+In the first version, I am rendering 120 curves with 10 spokes and a = 1, b = 10 (which were the parameters suggested by Mathword). In the second version, I am rendering 30 curves with 6 spokes with a and b the same. In the third version, I am rendering 10 curves with 8 spokes with random a and b. In all versions, I vary the scale of the curves.
 
 <!-- IMAGE-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
