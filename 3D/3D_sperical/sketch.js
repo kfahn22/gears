@@ -65,7 +65,7 @@ function hyperbolicTan(theta) {
 // Function to calculate r1, r2
 function gear(theta) {
   let a = 1;
-  let b = 10; // changing this value yields a very different shape
+  let b = 10; // changing this value yields a very different shape; b = 6
 
   // Equation for the radius of the gear curve
   return a + (1 / b) * hyperbolicTan(b * sin(sp * theta));
