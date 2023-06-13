@@ -1,4 +1,4 @@
-# P5 sketches with visualizations of gears
+# Gear curve in p5.js
 
 I am using the formula for the gear curve from [Wolfram Mathworld](https://mathworld.wolfram.com/GearCurve.html) and the formula for the hyperbolicTan function from [here](https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table).
 
@@ -9,6 +9,8 @@ I am using the formula for the gear curve from [Wolfram Mathworld](https://mathw
     `let l = pow(e, 2 * theta);`
     `return (l - 1) / (l + 1);`
 `}`
+
+In the first version, I am rendering 100 curves with a, = 1, b = 10, and spokes which were the parameters suggested by Mathword.  In the second version, I am rendering 30 curves with the same a and b with 6 spokes.  In the third version, I am rendering 8 spokes with a random a and b.  In all versions, I vary the scale of the curves.
 
 <!-- IMAGE-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
