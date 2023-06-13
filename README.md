@@ -1,5 +1,15 @@
 # P5 sketches with visualizations of gears
 
+I am using the formula for the gear curve from [Wolfram Mathworld](https://mathworld.wolfram.com/GearCurve.html) and the formula for the hyperbolicTan function from [here](https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table).
+
+`let r =a +(1/b) * hyperbolicTan(b * sin(m * theta));`
+
+`hyperbolicTan(theta) {`
+    `let e = 2.71828;`
+    `let l = pow(e, 2 * theta);`
+    `return (l - 1) / (l + 1);`
+`}`
+
 <!-- IMAGE-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->

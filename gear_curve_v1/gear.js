@@ -19,14 +19,13 @@ class Gear {
   hyperbolicTan(theta) {
     let e = 2.71828;
     let l = pow(e, 2 * theta);
-
     return (l - 1) / (l + 1);
   }
 
   // We need to loop through curve once before creating object
   oneCurve() {
     for (let theta = 0; theta < 361; theta += 1) {
-      // Equations for ophiuride curve
+      // Equationss for gear curve
       let r =
         this.a +
         (1 / this.b) * this.hyperbolicTan(this.b * sin(this.m * theta));
