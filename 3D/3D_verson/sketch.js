@@ -40,8 +40,6 @@ function draw() {
   }
 
   for (let i = 0; i < total; i++) {
-    fill(0, 0, 255);
-
     beginShape(TRIANGLE_STRIP);
     for (let j = 0; j < total + 1; j++) {
       let v1 = gears[i][j];
@@ -67,7 +65,7 @@ function hyperbolicTan(theta) {
 // Function to calculate r1, r2
 function gear(theta) {
   let a = 1;
-  let b = 10;
+  let b = 10; // changing this value yields a very different shape
 
   // Equation for the radius of the gear curve
   return a + (1 / b) * hyperbolicTan(b * sin(sp * theta));
