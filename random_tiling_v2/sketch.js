@@ -2,6 +2,7 @@
 // Code to implement grid from https://thecodingtrain.com/challenges/116-lissajous-curve-table
 // Gear curve equation from Wolfram Alpha
 // https://mathworld.wolfram.com/GearCurve.html
+// See https://github.com/antiboredom/p5.patgrad for info on background gradient
 
 const gcurve = [];
 // a, b are parameters to the function to calculate radius
@@ -25,18 +26,26 @@ function setup() {
   let col = color(255);
   for (let i = 0; i < 1; i++) {
     gcurve.push(
-      new Gear(width / 2, height / 2, 1, random(1, 10), random(50, 150), 30, col, m)
+      new Gear(
+        width / 2,
+        height / 2,
+        1,
+        random(1, 10),
+        random(50, 150),
+        30,
+        col,
+        m
+      )
     );
   }
 }
 
 function draw() {
-  let c1 = color(252, 100, 113);
-  let c2 = color(58, 124, 165);
-
-  setGradientL(0, 0, 500, 500, c1, c2, X_AXIS);
-  setGradientR(500, 0, 500, 500, c2, c1, X_AXIS);
-
+  let c1 = color(87, 31, 78);
+  let c2 = color(146, 201, 177);
+  gradient = createLinearGradient(45, 700);
+  gradient.colors(0, c1, 1, c2);
+  backgroundGradient(gradient);
   let w = width / 5;
   noFill();
   for (let i = 0; i < cols; i++) {

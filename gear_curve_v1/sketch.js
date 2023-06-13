@@ -13,10 +13,14 @@ let angle = 0;
 function setup() {
   createCanvas(400, 400);
   angleMode(DEGREES);
-  let c1 = color(239, 195, 245, 180);
-  let c2 = color(250, 166, 255, 150);
-  let c3 = color(115, 83, 186, 75);
-  let c4 = color(47, 25, 95, 50);
+  // let c1 = color(239, 195, 245, 180);
+  // let c2 = color(250, 166, 255, 150);
+  // let c3 = color(115, 83, 186, 75);
+  // let c4 = color(47, 25, 95, 50);
+  let c1 = color(102, 0, 102, 180);
+  let c2 = color(179, 0, 179, 150);
+  let c3 = color(255, 51, 255, 75);
+  let c4 = color(255, 179, 255, 50);
   for (let i = 0; i < 0.15 * n; i++) {
     gcurve.push(
       new Gear(width / 2, height / 2, a, b, random(20, 150), 30, c1, 2)
