@@ -1,5 +1,10 @@
 // This file how to mix shapes 
-// This is based on based on a tutorial by Martyn Steinrucken
+// This is based on the works of Inigo Quilez and Martijn Steinrucken
+
+// Another method is from Inigo Quilez 
+// https://iquilezles.org/
+
+// One method is based on tutorials by Martyn 
 // https://www.youtube.com/watch?v=__dSLc7-Cpo
 
 // Base code based on the Ray Marching Starting Point from the Art of Code
@@ -96,6 +101,23 @@ float sdGear( vec2 uv, float a, float b, float n) {
     //return d + length(uv) - r;
     return r;
 }
+
+
+// From Inigo Quilez
+// float opExtrusion( vec3 p, float h )
+// {
+//    float d;
+//   //choose 2D shape
+//   if (shape1 == 0.0) {
+//     d = sdCircle(p.xy, scale);
+//   } else if (shape1 == 1.0) {
+//     d = sdStar(p.xy, scale, 8, 6.0);
+//   } else if (shape1 == 2.0) {
+//     d = sdHexagon(p.xy, scale);
+//   }
+//     vec2 w = vec2( d, abs(p.z) - h );
+//     return min(max(w.x,w.y),0.0) + length(max(w,0.0));
+// }
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
