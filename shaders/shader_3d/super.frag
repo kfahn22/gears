@@ -41,11 +41,11 @@ uniform float bl;  // value for blue
 
 // Add color
 // The uvs are floating point with a range of [0.0,1.0] so we normalize by dividing by 255.
-#define PURPLE vec3(83, 29,109) / 255.
-#define RED vec3(255, 0, 0) / 255.
-#define ORANGE vec3(251,162, 100) / 255.
-#define BLUE vec3(0, 0, 255) / 255.
-#define GREEN vec3(0, 255, 0) / 255.
+#define EGGPLANT vec3(87, 31, 78) / 255.
+#define PURPLE vec3(255, 0, 0) / 255.
+#define BLUE vec3(79,117,155) / 255.
+#define OCEAN vec3(146,201,177) / 255.
+#define MINT vec3(162, 250, 163) / 255.
 
 // Function to add color to shape using x,y,z dimensions
 vec3 colXYZ( vec3 col1, vec3 col2, vec3 col3, vec3 n)
@@ -208,7 +208,7 @@ void main( )
     
     
     vec3 rd = GetRayDir(uv, ro, vec3(0,0.,0), 2.0);
-     col = colorGradient(uv, BLUE, PURPLE, 0.75);
+     col = colorGradient(uv, OCEAN, EGGPLANT, 0.75);
   
     float d = RayMarch(ro, rd);
 
@@ -219,8 +219,7 @@ void main( )
 
         float dif = dot(n, normalize(vec3(1,2,3)))*.5+.5;
         vec3 c = vec3(dif);
-        col = col + c*RED; 
-      //col = vec3( dif*RED, dif*GREEN, dif*BLUE );
+        col = col + c*BLUE; 
     } 
        
     col = pow(col, vec3(.4545));	// gamma correction
