@@ -1,4 +1,4 @@
-// Code base from Daniel Shiffman's Heart Curve coding challenge
+// Polar code base from Daniel Shiffman's Heart Curve coding challenge
 
 // Gear curve equation from Wolfram Alpha
 // https://mathworld.wolfram.com/GearCurve.html
@@ -9,11 +9,11 @@ let angle = 0;
 const spokes = 8; // number of spokes on the gears
 const sc = 30;
 let colors = [
-  [93,81,121],
-  [79,117,155],
-  [146,201,177],
-  [162, 250, 163]
-]
+  [93, 81, 121],
+  [79, 117, 155],
+  [146, 201, 177],
+  [162, 250, 163],
+];
 function setup() {
   createCanvas(600, 600, WEBGL);
   angleMode(DEGREES);
@@ -34,7 +34,7 @@ function setup() {
 }
 
 function draw() {
-  background(97,31,78);
+  background(97, 31, 78);
   rotate(angle);
   for (let i = 0; i < knobs.length; i++) {
     knobs[i].oneCurve();
