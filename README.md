@@ -16,6 +16,9 @@ In the second row, I have also created some random tilings by creating a grid of
 
 In the third row, I am experimenting with 3D. In the first two images, I have adapted Daniel Shiffman's code from the [3d Supershape callenge](https://thecodingtrain.com/challenges/26-3d-supershapes) to create a 3d shape. The last image draws the gear in 3d by varying z when the curves are created.
 
+In the last row, I am starting to work on shaders.  
+
+
 <!-- IMAGE-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -44,11 +47,11 @@ In the third row, I am experimenting with 3D. In the first two images, I have ad
     margin-right: auto;" width="500" /><br /><sub><b><br/></b></sub></a></td>
     </tr>
      <tr>
-      <td align="center"><a href=""> <img class="img" src="assets/shader-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
+      <td align="center"><a href=""> <img class="img" src="assets/shader-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>Shader<br/></b></sub></a></td>
       <td align="center"><img class="img" src="assets/.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
      <td align="center"><a href=""> <img class="img" src="assets/.jpg" alt="" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b>Shader<br/></b></sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b><br/></b></sub></a></td>
     </tr>
   </tbody>
 </table>
