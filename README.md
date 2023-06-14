@@ -28,7 +28,7 @@ In the last row, I am renderig shader versions of the gear. The first image show
       <td align="center"><img class="img" src="assets/gear-2.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
      <td align="center"><a href="https://editor.p5js.org/kfahn/full/DBEYmRv_b"> <img class="img" src="assets/gear-3.jpg" alt="" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b><br/></b></sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b>p5 sketch<br/></b></sub></a></td>
     </tr>
      <tr>
       <td align="center"><a href="https://editor.p5js.org/kfahn/full/1iuRoYBcR"> <img class="img" src="assets/tile-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>p5 sketch<br/></b></sub></a></td>
