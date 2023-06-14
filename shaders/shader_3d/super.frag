@@ -156,9 +156,10 @@ float GetDist(vec3 p) {
      vec3 q = p - vec3(0.0, 0.0, 0.0);
      float mv = 0.5;
     
-    // Mix gear and sphere
+    // Mix gear either a sphere or cube
       d = sdGear(q.xz, 0.3, 10.0, 10.0);
       d = mix(d, sdSphere(p, 0.5), mv);
+      //d = mix(d, sdBox(p, vec3(0.5)), mv);
     return d;
 }
 
@@ -208,8 +209,9 @@ void main( )
     
     
     vec3 rd = GetRayDir(uv, ro, vec3(0,0.,0), 2.0);
-     col = colorGradient(uv, OCEAN, EGGPLANT, 0.75);
-  
+    // col = colorGradient(uv, OCEAN, EGGPLANT, 0.75);
+    col = EGGPLANT;
+
     float d = RayMarch(ro, rd);
 
     if(d<MAX_DIST) {
@@ -219,7 +221,8 @@ void main( )
 
         float dif = dot(n, normalize(vec3(1,2,3)))*.5+.5;
         vec3 c = vec3(dif);
-        col = col + c*BLUE; 
+        col = (1.0 - c)*col + c*BLUE; 
+        //col = (1.0 - m)*col + m * EGGPLANT;
     } 
        
     col = pow(col, vec3(.4545));	// gamma correction
