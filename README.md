@@ -60,4 +60,6 @@ In the last row, I am renderig shader versions of the gear. The first image show
 
 <!-- IMAGE-LIST:END -->
 
-![]()
+## Animations
+
+![](assets/tiling.gif)
