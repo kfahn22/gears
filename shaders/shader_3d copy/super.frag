@@ -91,10 +91,12 @@ float hyperbolicTan( float theta) {
     return (l - 1.0) / (l + 1.0);
 }
 
+float angle( vec2 uv) {
+    return atan(uv.y, uv.x);
+}
 // a and b are parameters of the gear curve, n is the # of spokes
 // a will determine the depth of the spikes
-float sdGear( vec2 uv, float a, float b, float n) {
-    float theta = atan(uv.y, uv.x);
+float sdGear( vec2 uv, float a, float b, float n, float theta) {
     float r = (a/b)*(hyperbolicTan(b * sin(n*theta))) ;
     float d = sdCircle(uv, 0.4);
     
@@ -128,13 +130,29 @@ float GetDist(vec3 p) {
     float d, s;
     // Can move the shape by subtracting a vec3()
      vec3 q = p - vec3(0.0, 0.0, 0.0);
-     float mv = 0.4;
-    
+     float mv = 0.5;
+     float a1 = atan(length(p.xy), p.z);
+     float a2 = atan(length(p.yz), p.x);
+     float a3 = atan(length(p.xz), p.y);
+     
     // Mix gear either a sphere or cube
-      d = sdGear(q.xz, 0.3, 10.0, 10.0);
-      d = mix(d, sdSphere(p, 0.5), mv);
-      //d = mix(d, sdBox(p, vec3(0.5)), mv);
-    return d;
+      float d1 = sdGear(vec2( length(p.xy), p.z ), 0.3, 10.0, 10.0, a1);
+      float d2 = sdGear(vec2( length(p.yz), p.x ), 0.3, 10.0, 10.0, a2);
+      float d3 = sdGear(vec2( length(p.xz), p.y ), 0.3, 10.0, 10.0, a3);
+      // d = mix(mix(d1, d2, 0.5), d3, 0.5); doesn't work
+
+    // d1 = mix(d1, sdSphere(p, 0.4), mv);
+    // d2 = mix(d2, sdSphere(p, 0.4), mv);
+    // d3 = mix(d3, sdSphere(p, 0.4), mv);
+    // d = mix(mix(d1, d2, mv), d3, mv);
+    //float dd = max(d1, d2);
+    float dd1 = max(d1, d2);
+    float dd2 = max(d2, d3);
+    float dd3 = max(d1, d3);
+    //float dd = mix(mix(dd1, dd2, 0.5), dd3, 0.5);
+    float dd = max(max(dd1, dd2), dd3);
+    d = mix(dd, sdSphere(p, 0.4), mv);
+  return d;
 }
 
 float RayMarch(vec3 ro, vec3 rd) {

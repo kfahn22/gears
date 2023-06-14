@@ -1,6 +1,9 @@
 // Base code based on the Ray Marching Starting Point from the Art of Code
 // https://www.youtube.com/watch?v=PGtv-dBi2wE
 
+
+// https://iquilezles.org/articles/distfunctions2d/
+
 #ifdef GL_ES
 precision mediump float;
 #endif
