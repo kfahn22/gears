@@ -91,11 +91,13 @@ float hyperbolicTan( float theta) {
 // }
 
 // a and b are parameters of the gear curve, n is the # of spokes
+// a will determine the depth of the spikes
 float GearSDF( vec2 uv, float a, float b, float n) {
     float theta = atan(uv.y, uv.x);
-    float r = 0.0 + (1.0/b)*(hyperbolicTan(b * sin(n*theta)));
-    float d = sdCircle(uv, 0.2);
-    return d + min(d, r);
+    float r = (a/b)*(hyperbolicTan(b * sin(n*theta))) ;
+    float d = sdCircle(uv, 0.4);
+    //return d + min(d, r);
+    return d + length(uv) - r;
 }
 
 void main( )
@@ -107,7 +109,7 @@ void main( )
     col = BLUE;
     // col = colorGradient(uv, BLUE, PURPLE, 0.75);
    
-    float d = GearSDF(uv, 0.0, 10.0, 10.0);
+    float d = GearSDF(uv, 0.3, 10.0, 3.0);
     float m = 1.0 -S(0.008, 0.0, d);
     
      col = (1.0 - m)*col + m * PURPLE;

@@ -76,21 +76,11 @@ float hyperbolicTan( float theta) {
     return (l - 1.0) / (l + 1.0);
 }
 
-// function to extract polar coordinates
-// from Daniel Shiffman
-// vec3 Spherical( in vec3 pos) 
-// {
-//    float r = sqrt(pos.x*pos.x + pos.y*pos.y + pos.z*pos.z);
-//    float theta = atan( sqrt(pos.x*pos.x + pos.y*pos.y), pos.z);
-//    float phi = atan(pos.y, pos.x);
-//    vec3 w = vec3(r, theta, phi);
-//    return w;
-// }
-
 // a and b are parameters of the gear curve, n is the # of spokes
+// a will determine the length of the spokes
 float GearSDF( vec2 uv, float a, float b, float n) {
     float theta = atan(uv.y, uv.x);
-    float r = 0.0 + (1.0/b)*(hyperbolicTan(b * sin(n*theta)));
+    float r = 0.0 + (a/b)*(hyperbolicTan(b * sin(n*theta)));
     float d = sdCircle(uv, 0.2);
     return d + min(d, r);
 }
@@ -104,8 +94,8 @@ void main( )
     col = OCEAN;
     // col = colorGradient(uv, BLUE, PURPLE, 0.75);
    
-    float d = GearSDF(uv, 0.0, 10.0, 10.0);
-    float m = 1.0 -S(0.008, 0.0, d);
+    float d = GearSDF(uv, 0.2, 10.0, 10.0);
+    float m = S(0.008, 0.0, d);
     
      col = (1.0 - m)*col + m * EGGPLANT;
   

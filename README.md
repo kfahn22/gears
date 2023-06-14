@@ -48,7 +48,7 @@ In the third row, I am experimenting with 3D. In the first two images, I have ad
       <td align="center"><img class="img" src="assets/.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
      <td align="center"><a href=""> <img class="img" src="assets/.jpg" alt="" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b><br/></b></sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b>Shader<br/></b></sub></a></td>
     </tr>
   </tbody>
 </table>
