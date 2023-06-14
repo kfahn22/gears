@@ -5,7 +5,7 @@
 // https://iquilezles.org/
 
 // One method is based on tutorials by Martyn 
-// https://www.youtube.com/c/TheArtofCodeIsCool
+// https://www.youtube.com/watch?v=__dSLc7-Cpo
 
 // Base code based on the Ray Marching Starting Point from the Art of Code
 // https://www.youtube.com/watch?v=PGtv-dBi2wE
@@ -31,13 +31,6 @@ uniform float shape1;
 uniform float shape2;
 uniform float scale;  // scale
 uniform float mv;  // mix value
-// uniform float h; // height 
-// uniform float r; // radius for star
-// uniform int nn;  // angle parameter for star
-// uniform float m;  // angle paramenter for star
-uniform float re;  // value for red
-uniform float gr;  // value for green
-uniform float bl;  // value for blue
 
 // Add color
 // The uvs are floating point with a range of [0.0,1.0] so we normalize by dividing by 255.
@@ -75,25 +68,6 @@ float ndot(vec2 a, vec2 b ) { return a.x*b.x - a.y*b.y; }
 mat2 Rot(float a) {
     float s=sin(a), c=cos(a);
     return mat2(c, -s, s, c);
-}
-
-// From KIFS Fractals explained by The Art of Code
-// https://www.youtube.com/watch?v=il_Qg9AqQkE
-
-// Create a normal line that rotates around origin
-vec2 N(float angle)
-  {
-  return vec2( sin(angle), cos(angle) );
-}
-// function to extract polar coordinates
-// from Daniel Shiffman
-vec3 Spherical( in vec3 pos) 
-{
-   float r = sqrt(pos.x*pos.x + pos.y*pos.y + pos.z*pos.z);
-   float theta = atan( sqrt(pos.x*pos.x + pos.y*pos.y), pos.z);
-   float phi = atan(pos.y, pos.x);
-   vec3 w = vec3(r, theta, phi);
-   return w;
 }
 
 // 2d Circle and Box SDFs from Inigo Quilez
@@ -149,12 +123,12 @@ float sdGear( vec2 uv, float a, float b, float n) {
 ///////////////////////////////////////////////////////////////////////////
 // Mix 2D sdf with 3D sdf
 // From the Art of Code
-// Mix two differenet SDFs
+// Mix two different SDFs
 float GetDist(vec3 p) {
     float d, s;
     // Can move the shape by subtracting a vec3()
      vec3 q = p - vec3(0.0, 0.0, 0.0);
-     float mv = 0.5;
+     float mv = 0.4;
     
     // Mix gear either a sphere or cube
       d = sdGear(q.xz, 0.3, 10.0, 10.0);
