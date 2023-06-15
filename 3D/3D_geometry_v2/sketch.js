@@ -67,7 +67,7 @@ function draw() {
   fill(93, 81, 121);
   //set a basic light to see that normals are calculated
   pointLight(255, 255, 255, 0, 50, -50);
-  normalMaterial();
+  specularMaterial(146, 201, 177);
   push();
   //stroke(128);
   let geoSize = width / 2;

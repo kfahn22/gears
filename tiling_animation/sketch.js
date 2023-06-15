@@ -29,6 +29,7 @@ function keyPressed() {
     saveGif("GIF/tiling.gif", frames, options);
   }
 }
+
 function setup() {
   createCanvas(500, 500);
   cols = floor(width / w) - 1;
