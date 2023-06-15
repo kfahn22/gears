@@ -22,10 +22,10 @@
 let ang = 0;
 let gears = [];
 let rotation = true;
-let detailX = 16;
-let detailY = 16;
+let detailX = 48; // 16
+let detailY = 48; // 16
 let num;
-let sc = 4;
+let sc = 120;
 let sp = 8; // number of spokes
 let myGeometry;
 
@@ -42,10 +42,10 @@ function setup() {
         let lon = map(j, 0, detailY, -PI, PI);
         let r1 = gear(lon);
         let r = gear(lat + lon);
-        let x = r1 * cos(lon) * r2 * sin(lat);
-        let y = r1 * sin(lon) * r2 * sin(lat);
-        //let z = r + sc * (r2 * cos(lat)); // change sin(lat) to cos(lat) get two
-        let z = r - (r1 * cos(lon));
+        let x = sc * r1 * cos(lon) * r2 * sin(lat);
+        let y = sc * r1 * sin(lon) * r2 * sin(lat);
+        let z = r + sc * (r2 * cos(lat)); // change sin(lat) to cos(lat) get two
+        //let z = r - (r1 * cos(lon));  // yields some interesting results
         this.vertices.push(new p5.Vector(x, y, z));
       }
     }
@@ -61,11 +61,11 @@ function draw() {
   rotateX(ang);
   rotateY(ang);
   rotateZ(ang);
-  
+
   noStroke();
 
   orbitControl();
-  fill(93,  81, 121)
+  fill(93, 81, 121);
   //set a basic light to see that normals are calculated
   pointLight(255, 255, 255, 0, 50, -50);
   normalMaterial();
@@ -74,7 +74,7 @@ function draw() {
   let geoSize = width / 2;
   rotateY((cos(millis() / 1000) * PI) / 4);
   //translate(-width / 2, -width / 2);
-  scale(sc);
+  //scale(sc);
   model(myGeometry);
   pop();
 
@@ -112,12 +112,12 @@ function hyperbolicCos(theta) {
 // Function to calculate r1, r2
 function gear(theta) {
   let a = 1;
-  let b = 4; // changing this value yields a very different shape
+  let b = 10; //4 changing this value yields a very different shape
 
   // Equation for the radius
 
-  //return a + (1 / b) * hyperbolicTan(b * cos(sp * theta));
-  return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
+  return a + (1 / b) * hyperbolicTan(b * sin(sp * theta));
+  //return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
   // return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
 }
 

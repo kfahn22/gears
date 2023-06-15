@@ -22,59 +22,63 @@
 let ang = 0;
 let gears = [];
 let rotation = true;
-let total = 16;
+let detailX = 32; // 16
+let detailY = 32; // 16
 let num;
-let sc = 3;
+let sc = 50;
 let sp = 8; // number of spokes
+let myGeometry;
 
 function setup() {
   createCanvas(600, 600, WEBGL);
   pixelDensity(1);
+
+  myGeometry = new p5.Geometry(detailX, detailY, function () {
+    for (let i = 0; i < detailX + 1; i++) {
+      gears[i] = [];
+      let lat = map(i, 0, detailX, -PI, PI);
+      let r2 = gear(lat);
+      for (let j = 0; j < detailY + 1; j++) {
+        let lon = map(j, 0, detailY, -PI, PI);
+        let r1 = gear(lon);
+        let r = gear(lat + lon);
+        let x = r1 * cos(lon) * r2 * cos(lat);
+        let y = r1 * sin(lon) * r2 * sin(lat);
+        let z = r - (r1 * cos(lon));
+        this.vertices.push(new p5.Vector(x, y, z));
+      }
+    }
+    // this will attach all our vertices and create faces automatically
+    this.computeFaces();
+    // this will calculate the normals to help with lighting
+    this.computeNormals();
+  });
 }
 
 function draw() {
-  background(87, 31, 78);
+  background(100);
   rotateX(ang);
   rotateY(ang);
   rotateZ(ang);
-  ambientLight(279, 117, 155);
-  ambientMaterial(79, 117, 155);
-  pointLight(255, 255, 255, 0, 0, 1);
-  // pointLight(255, 255, 255, -1, 1, 1);
-  // pointLight(255, 255, 255, -1, 1, -1);
-  // pointLight(255, 255, 255, 1, -1, 1);
-  //stroke(79, 117, 155);
-  noStroke();
-  for (let i = 0; i < total + 1; i++) {
-    gears[i] = [];
-    let lat = map(i, 0, total, 0, TWO_PI);
-    let r2 = gear(lat);
-    for (let j = 0; j < total + 1; j++) {
-      let lon = map(j, 0, total, -PI, PI);
-      let r1 = gear(lon);
-      let r = gear(lat + lon);
-      let x = sc * r1 * cos(lon) * r2 * sin(lat);
-      let y = sc * r1 * sin(lon) * r2 * sin(lat);
-      //let z = r + sc * (r2 * cos(lat)); // change sin(lat) to cos(lat) get two
-      let z = r - sc * (r1 * cos(lon));
-      gears[i].push(createVector(x, y, z));
-    }
-  }
 
-  for (let i = 0; i < total; i++) {
-    beginShape(TRIANGLE_STRIP);
-    for (let j = 0; j < total + 1; j++) {
-      let v1 = gears[i][j];
-      vertex(v1.x, v1.y, v1.z);
-      let v2 = gears[i + 1][j];
-      vertex(v2.x, v2.y, v2.z);
-    }
-    endShape();
-  }
+  noStroke();
+
+  orbitControl();
+  fill(93, 81, 121);
+  //set a basic light to see that normals are calculated
+  pointLight(255, 255, 255, 0, 50, -50);
+  normalMaterial();
+  push();
+  //stroke(128);
+
+  //rotateY((cos(millis() / 1000) * PI) / 4);
+  //translate(-width / 2, -width / 2);
+  scale(sc);
+  model(myGeometry);
+  pop();
 
   if (rotation) {
     ang += 0.01;
-   
   }
 }
 
@@ -107,13 +111,12 @@ function hyperbolicCos(theta) {
 // Function to calculate r1, r2
 function gear(theta) {
   let a = 1;
-  let b = 4; // changing this value yields a very different shape
+  let b = 4; //4 changing this value yields a very different shape
 
   // Equation for the radius
 
-  //return a + (1 / b) * hyperbolicTan(b * cos(sp * theta));
   return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
-  // return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
+  //return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
 }
 
 function mousePressed() {
