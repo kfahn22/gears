@@ -8,8 +8,8 @@ let gcurve = [];
 // [1, 10] were suggested on Wolfram Alpha
 let a = 1; // as a increase tends toward a circle
 let b = 1; // as b decreases the spokes get longer and start to curve
-let spokes = 4; // number of spokes between
-let n = 35; // number of gears to draw
+let spokes = 6; // number of spokes between
+let n = 15; // number of gears to draw
 let sc = 30; // scale: 20
 let angle = 0;
 let sw = 1.5; // strokeweight
@@ -50,9 +50,9 @@ function draw() {
     gcurve[i].oneCurve();
     gcurve[i].show();
   }
-  // inc += 360 / frames;
-  // b = map(sin(inc), -1, 1, 1, 5);
-  // gcurve = [];
+  inc += 360 / frames;
+  a = map(sin(inc), -1, 1, 0.01, 3);
+  gcurve = [];
 }
 
 function mousePressed() {
