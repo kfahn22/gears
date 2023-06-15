@@ -19,14 +19,13 @@
 
 // adjusting total also yields some interesting results, but there is a
 // limit to how much you can increase total before the animation slows way down
-let angX = 0;
-let angY = 0;
+let ang = 0;
 let gears = [];
 let rotation = true;
 let total = 16;
 let num;
-let sc = 80;
-let sp = 32; // number of spokes
+let sc = 3;
+let sp = 8; // number of spokes
 
 function setup() {
   createCanvas(600, 600, WEBGL);
@@ -35,12 +34,16 @@ function setup() {
 
 function draw() {
   background(87, 31, 78);
-  rotateX(angX);
-  rotateY(angY);
-
-  ambientLight(79, 117, 155);
-  stroke(146, 201, 177);
-
+  rotateX(ang);
+  rotateY(ang);
+  //rotateZ(90);
+  ambientLight(255);
+  ambientMaterial(79, 117, 155);
+  let dirX = (mouseX / width - 0.5) * 2;
+  let dirY = (mouseY / height - 0.5) * 2;
+  directionalLight(79, 117, 155, -dirX, -dirY, -1);
+  stroke(79, 117, 155);
+  //noStroke();
   for (let i = 0; i < total + 1; i++) {
     gears[i] = [];
     let lat = map(i, 0, total, 0, TWO_PI);
@@ -69,8 +72,8 @@ function draw() {
   }
 
   if (rotation) {
-    angX += 0.03;
-    angY += 0.04;
+    ang += 0.01;
+   
   }
 }
 
@@ -108,8 +111,8 @@ function gear(theta) {
   // Equation for the radius
 
   //return a + (1 / b) * hyperbolicTan(b * cos(sp * theta));
-  //return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
-  return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
+  return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
+  // return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
 }
 
 function mousePressed() {
