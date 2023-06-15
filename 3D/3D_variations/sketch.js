@@ -6,7 +6,6 @@
 // https://byjus.com/maths/hyperbolic-function/
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
 
-
 // Variations:
 // a = 1, b = 4; sc = 2, sp = 4 yields a "xmas-tree" topper like shape
 // a + (1 / b) * hyperbolicSin(b * sin(sp * theta));
@@ -18,7 +17,7 @@
 // a = 1, b = 4, sc = 80, sp = 16 yields a folded structure with rounded edges
 // return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
 
-// adjusting total also yields some interesting results, but there is a 
+// adjusting total also yields some interesting results, but there is a
 // limit to how much you can increase total before the animation slows way down
 let angX = 0;
 let angY = 0;
@@ -104,9 +103,9 @@ function hyperbolicCos(theta) {
 // Function to calculate r1, r2
 function gear(theta) {
   let a = 1;
-  let b = 4; // changing this value yields a very different shape; b = 6
+  let b = 4; // changing this value yields a very different shape
 
-  // Equation for the radius of the gear curve
+  // Equation for the radius
 
   //return a + (1 / b) * hyperbolicTan(b * cos(sp * theta));
   //return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
@@ -114,5 +113,5 @@ function gear(theta) {
 }
 
 function mousePressed() {
-  save("globe.jpg");
+  save("3dshape.jpg");
 }
