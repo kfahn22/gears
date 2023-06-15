@@ -22,33 +22,33 @@
 let ang = 0;
 let gears = [];
 let rotation = true;
-let detailX = 32; // 16
-let detailY = 32; // 16
+let total = 16;
 let num;
-let sc = 50;
+let sc = 3;
 let sp = 8; // number of spokes
 let myGeometry;
+let detailX = 16;
+let detailY = 16;
 
 function setup() {
   createCanvas(600, 600, WEBGL);
   pixelDensity(1);
-
   myGeometry = new p5.Geometry(detailX, detailY, function () {
     for (let i = 0; i < detailX + 1; i++) {
       gears[i] = [];
-      let lat = map(i, 0, detailX, -PI, PI);
+      let lat = map(i, 0, detailX, 0, TWO_PI);
       let r2 = gear(lat);
       for (let j = 0; j < detailY + 1; j++) {
         let lon = map(j, 0, detailY, -PI, PI);
         let r1 = gear(lon);
         let r = gear(lat + lon);
-        let x = r1 * cos(lon) * r2 * cos(lat);
-        let y = r1 * sin(lon) * r2 * sin(lat);
-        let z = r - (r1 * cos(lon));
-        this.vertices.push(new p5.Vector(x, y, z));
+        let x = sc * r1 * cos(lon) * r2 * sin(lat);
+        let y = sc * r1 * sin(lon) * r2 * sin(lat);
+        //let z = r + sc * (r2 * cos(lat)); // change sin(lat) to cos(lat) get two
+        let z = r - sc * (r1 * cos(lon));
+        this.vertices.push(createVector(x, y, z));
       }
-    }
-    // this will attach all our vertices and create faces automatically
+    } // this will attach all our vertices and create faces automatically
     this.computeFaces();
     // this will calculate the normals to help with lighting
     this.computeNormals();
@@ -70,10 +70,10 @@ function draw() {
   normalMaterial();
   push();
   //stroke(128);
-
-  //rotateY((cos(millis() / 1000) * PI) / 4);
+  let geoSize = width / 2;
+  rotateY((cos(millis() / 1000) * PI) / 4);
   //translate(-width / 2, -width / 2);
-  scale(sc);
+  //scale(sc);
   model(myGeometry);
   pop();
 
@@ -111,12 +111,13 @@ function hyperbolicCos(theta) {
 // Function to calculate r1, r2
 function gear(theta) {
   let a = 1;
-  let b = 4; //4 changing this value yields a very different shape
+  let b = 4; // changing this value yields a very different shape
 
   // Equation for the radius
 
+  //return a + (1 / b) * hyperbolicTan(b * cos(sp * theta));
   return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
-  //return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
+  // return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
 }
 
 function mousePressed() {
