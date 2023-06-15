@@ -6,10 +6,10 @@ let angX = 0;
 let angY = 0;
 let gears = [];
 let rotation = true;
-let total = 48;
+let total = 16;
 let num;
-let sc = 150;
-let sp = 6; // number of spokes
+let sc = 120;
+let sp = 4; // number of spokes
 
 function setup() {
   createCanvas(600, 600, WEBGL);
@@ -34,7 +34,8 @@ function draw() {
       let r = gear(lat + lon);
       let x = sc * r1 * cos(lon) * r2 * sin(lat);
       let y = sc * r1 * sin(lon) * r2 * sin(lat);
-      let z = r + sc * (r2 * cos(lat)); 
+      //let z = r + sc * (r2 * cos(lat)); // change sin(lat) to cos(lat) get two
+      let z = r - sc * (r1 * cos(lon));
       gears[i].push(createVector(x, y, z));
     }
   }
@@ -65,10 +66,11 @@ function hyperbolicTan(theta) {
 // Function to calculate r1, r2
 function gear(theta) {
   let a = 1;
-  let b = 10; // changing this value yields a very different shape; b = 6
+  let b = 4; // changing this value yields a very different shape; b = 6
 
   // Equation for the radius of the gear curve
-  return a + (1 / b) * hyperbolicTan(b * sin(sp * theta));
+  //return a + (1 / b) * hyperbolicTan(b * sin(sp * theta));
+  return a + (1 / b) * hyperbolicTan(b * cos(sp * theta));
 }
 
 function mousePressed() {
