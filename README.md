@@ -68,3 +68,5 @@ To learn how to create a perfect GIF loop, watch Daniel Shiffman's short [p5.js 
 
 ![](assets/grid_animation.gif)
 ![](assets/grid_aninmation2.gif)
+
+![animation](https://github.com/kfahn22/gears/assets/65121394/d13a1863-0580-49e7-981c-b9d97ee94ad5)
