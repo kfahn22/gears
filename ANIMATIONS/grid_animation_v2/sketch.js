@@ -18,7 +18,7 @@ const w = 50;
 let cols;
 let rows;
 let inc = -1;
-let frames = 60;
+let frames = 120;
 
 // for backgroundgradient
 const Y_AXIS = 1;
