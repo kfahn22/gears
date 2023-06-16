@@ -26,7 +26,7 @@ function keyPressed() {
       units: "frames",
       delay: 0,
     };
-    saveGif("GIF/tiling.gif", frames, options);
+    saveGif("GIF/grid.gif", frames, options);
   }
 }
 
