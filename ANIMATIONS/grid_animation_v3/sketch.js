@@ -8,13 +8,12 @@ let gcurve = [];
 const a = 1;
 const b = 1;
 const m = 10; // number of spokes
-let sc = 50;
-let angle = 0;
+let sc = 25;
 const w = 50;
 let cols;
 let rows;
 let inc = -1;
-const frames = 60;
+const frames = 120;
 
 function keyPressed() {
   if (key == "s") {

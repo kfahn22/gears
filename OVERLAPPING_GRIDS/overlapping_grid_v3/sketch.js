@@ -8,7 +8,7 @@ const gcurve = [];
 const a = 1;
 const b = 1;
 const m = 10; // number of spokes
-let sc = 250;
+let sc;
 let angle = 0;
 const w = 50;
 let cols;
@@ -21,7 +21,7 @@ function setup() {
   angleMode(DEGREES);
   let col = color(255);
   for (let i = 0; i < 1; i++) {
-    gcurve.push(new Gear(width / 2, height / 2, 1, 10, sc, 30, col, m));
+    gcurve.push(new Gear(width / 2, height / 2, 1, 10, random(50, 250), 30, col, m));
   }
 }
 

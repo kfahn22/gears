@@ -15,7 +15,19 @@ class Gear {
     this.c = _c;
     this.col = color(this.c);
   }
+  hyperbolicCot(theta) {
+    let e = 2.71828;
+    let k = pow(e, theta);
+    let l = pow(e, -theta);
+    return (k + l) / (k - l);
+  }
 
+  hyperbolicSin(theta) {
+    let e = 2.71828;
+    let k = pow(e, theta);
+    let l = pow(e, -theta);
+    return (k - l) / 2;
+  }
   hyperbolicCos(theta) {
     let e = 2.71828;
     let k = pow(e, theta);
