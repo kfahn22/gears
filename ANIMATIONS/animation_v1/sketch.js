@@ -6,7 +6,7 @@
 let gcurve = [];
 // a and b are parameters that control the shape of the curve
 // [1, 10] were suggested on Wolfram Alpha
-const a = 1; // as a increase tends toward a circle
+const a = 1; // as a increases tends toward a circle
 let b = 1; // as b decreases the spokes get longer and start to curve
 const spokes = 4; // number of spokes between
 const n = 35; // number of gears to draw
