@@ -2,6 +2,10 @@
 // Code to implement grid from https://thecodingtrain.com/challenges/116-lissajous-curve-table
 // Gear curve equation from Wolfram Alpha
 // https://mathworld.wolfram.com/GearCurve.html
+// HyperbolicTan function from https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
+
+// You can find other sketches using the hear curve at my gear repo
+// https://github.com/kfahn22/gears
 
 let gcurve = [];
 // a, b are parameters to the function to calculate radius
@@ -38,11 +42,10 @@ function setup() {
 }
 
 function draw() {
-  background(87, 31, 78);
-  let c1 = color(146, 201, 177);
-  let c2 = color(87, 31, 78);
-  let col = color(146, 201, 177);
-
+  background(146, 201, 177);
+  let col = color(87, 31, 78);
+  // let c1 = color(146, 201, 177);
+  // let c2 = color(87, 31, 78);
   // setGradientL(0, 0, 500, 500, c1, c2, X_AXIS);
   // setGradientR(500, 0, 500, 500, c2, c1, X_AXIS);
 

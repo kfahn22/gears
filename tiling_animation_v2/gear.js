@@ -47,7 +47,7 @@ class Gear {
     noFill();
     beginShape();
     for (let v of this.points) {
-      strokeWeight(2);
+      strokeWeight(3);
       stroke(this.col);
       vertex(v.x, v.y);
     }
