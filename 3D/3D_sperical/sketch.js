@@ -34,7 +34,7 @@ function draw() {
       let r = gear(lat + lon);
       let x = sc * r1 * cos(lon) * r2 * sin(lat);
       let y = sc * r1 * sin(lon) * r2 * sin(lat);
-      let z = r + sc * (r2 * cos(lat)); // change sin(lat) to cos(lat) get two
+      let z = r + sc * (r2 * cos(lat)); 
       gears[i].push(createVector(x, y, z));
     }
   }

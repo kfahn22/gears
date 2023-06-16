@@ -2,11 +2,15 @@
 // Code to implement grid from https://thecodingtrain.com/challenges/116-lissajous-curve-table
 // Gear curve equation from Wolfram Alpha
 // https://mathworld.wolfram.com/GearCurve.html
+// HyperbolicTan function from https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
+
+// You can find other sketches using the hear curve at my gear repo
+// https://github.com/kfahn22/gears
 
 let gcurve = [];
 // a, b are parameters to the function to calculate radius
 const a = 1;
-const b = 10;
+const b = 4;
 let sc = 50; // scale
 let m = 4; // number of spokes
 let angle = 0;
@@ -38,18 +42,17 @@ function setup() {
 }
 
 function draw() {
-  background(87, 31, 78);
-  let c1 = color(146, 201, 177);
-  let c2 = color(87, 31, 78);
-  let col = color(146, 201, 177);
-
+  background(146, 201, 177);
+  let col = color(87, 31, 78);
+  // let c1 = color(146, 201, 177);
+  // let c2 = color(87, 31, 78);
   // setGradientL(0, 0, 500, 500, c1, c2, X_AXIS);
   // setGradientR(500, 0, 500, 500, c2, c1, X_AXIS);
 
   let w = width / 5;
 
   for (let i = 0; i < 1; i++) {
-    gcurve.push(new Gear(width / 2, height / 2, a, b, sc, 30, col, 8));
+    gcurve.push(new Gear(width / 2, height / 2, a, b, sc, 30, col, m));
   }
 
   noFill();

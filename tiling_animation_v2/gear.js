@@ -2,16 +2,17 @@
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
 
 class Gear {
-  constructor(_px, _py, _z, _a, _b, _spokes, _sc) {
+  constructor(_px, _py, _a, _b, _sc, _rot, _c, _m) {
     this.px = _px;
     this.py = _py;
-    this.z = _z;
     this.a = _a;
     this.b = _b;
-    this.sp = _spokes;
+    this.m = _m;
     this.sc = _sc;
     this.points = [];
-    //this.col = color(this.h, 100, 50, 80);
+    this.rot = _rot;
+    this.c = _c;
+    this.col = color(this.c);
   }
 
   hyperbolicTan(theta) {
@@ -19,18 +20,17 @@ class Gear {
     let l = pow(e, 2 * theta);
     return (l - 1) / (l + 1);
   }
+
   // We need to loop through curve once before creating object
   oneCurve() {
     for (let theta = 0; theta < 361; theta += 1) {
-      // Equations for Gear curve
+      // Equationss for gear curve
       let r =
         this.a +
-        (1 / this.b) * this.hyperbolicTan(this.b * sin(this.sp * theta));
+        (1 / this.b) * this.hyperbolicTan(this.b * sin(this.m * theta));
       let x = this.sc * r * sin(theta);
       let y = this.sc * r * cos(theta);
-      let z = this.sc * r * this.z;
-      let p = createVector(x, y, z);
-
+      let p = createVector(x, y);
       if (this.points.length < 361) {
         this.points[theta] = p;
       } else {
@@ -38,23 +38,20 @@ class Gear {
       }
     }
   }
+  reset() {
+    this.points = [];
+  }
 
-  show(angle) {
+  show() {
     push();
     noFill();
-    translate(this.px, this.py);
-    rotate(angle);
     beginShape();
-    for (let i = 0; i < this.points.length; i++) {
-      strokeWeight(2);
-      let col = color(220, 100, 50, 80);
-      //let col = color(this.h[i], 100, 50, 80);
-      stroke(col);
-      let v = this.points[i];
-      vertex(v.x, v.y, v.z);
+    for (let v of this.points) {
+      strokeWeight(3);
+      stroke(this.col);
+      vertex(v.x, v.y);
     }
     endShape();
     pop();
-    this.points = [];
   }
 }

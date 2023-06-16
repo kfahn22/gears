@@ -62,5 +62,9 @@ In the last row, I am renderig shader versions of the gear. The first image show
 
 ## Animations
 
+To learn how to create a looping GIF, watch this short by [Daniel Siffman](https://www.youtube.com/shorts/CEnfKhs6wLg)
+
+[p5.j sketch](https://editor.p5js.org/kfahn/sketches/_N3eGG5yQ)
+
 ![](assets/tiling.gif)
 ![](assets/tiling2.gif)
