@@ -2,16 +2,15 @@
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
 
 class Gear {
-  constructor(_px, _py, _a, _b, _sc, _rot, _c, _st) {
+  constructor(_px, _py, _a, _b, _sc, _rot, _c, _m) {
     this.px = _px;
     this.py = _py;
     this.a = _a;
     this.b = _b;
-    this.m = 10;
+    this.m = _m;
     this.sc = _sc;
     this.points = [];
     this.rot = _rot;
-    this.st = _st;
     this.c = _c;
     this.col = color(this.c);
   }
