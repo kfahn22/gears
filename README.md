@@ -40,10 +40,10 @@ In the last row, I am renderig shader versions of the gear. The first image show
     </tr>
      <tr>
       <td align="center"><a href="https://editor.p5js.org/kfahn/full/Snumj-AgS"> <img class="img" src="assets/3d-1.jpg" alt="3D spherical shape" style="vertical-align:top;" width="500" /><br /><sub><b>3D spherical shape<br/></b>p5 sketch</sub></a></td>
-      <td align="center"><a href="https://editor.p5js.org/kfahn/sketches/YceFKpQ8F"><img class="img" src="assets/3d-2.jpg" alt="3D Geometry showing normals" style="vertical-align:top;" width="500" /><br /><sub><b>3D Geometry showing normals<br/></b>p5 sketch</sub></a></td>
-     <td align="center"><a href=""> <img class="img" src="assets/3d-3.jpg" alt="" style=" display: block;
+      <td align="center"><a href="https://editor.p5js.org/kfahn/sketches/YceFKpQ8F"><img class="img" src="assets/3dge0metry.jpg" alt="3D Geometry showing normals" style="vertical-align:top;" width="500" /><br /><sub><b>3D Geometry showing normals<br/></b>p5 sketch</sub></a></td>
+     <td align="center"><a href="https://editor.p5js.org/kfahn/sketches/sI7UvptoV"> <img class="img" src="assets/3d-3.jpg" alt="" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b>Gear curves rendered in 3D<br/></b></sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b>Gear curves rendered in 3D<br/></b>p5 sketch</sub></a></td>
     </tr>
      <tr>
       <td align="center"><a href=""> <img class="img" src="assets/shader-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>2D shape - shader<br/></b>p5 sketch</sub></a></td>
