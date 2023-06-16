@@ -47,10 +47,10 @@ In the last row, I am renderig shader versions of the gear. The first image show
     </tr>
      <tr>
       <td align="center"><a href=""> <img class="img" src="assets/shader-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>2D shape - shader<br/></b>p5 sketch</sub></a></td>
-      <td align="center"><img class="img" src="assets/shader-2.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
+      <td align="center"><img class="img" src="assets/shader-2.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>Gear curve mixed with a cube<br/></b></sub></a></td>
      <td align="center"><a href="https://editor.p5js.org/kfahn/full/S8rDxeC1K"> <img class="img" src="assets/shader-3.jpg" alt="" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b>3D shape - shader<br/></b>p5 sketch</sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b>Gear curve mixed with a sphere<br/></b>p5 sketch</sub></a></td>
     </tr>
   </tbody>
 </table>
