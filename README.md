@@ -12,7 +12,7 @@ I am using the formula for the gear curve from [Wolfram Mathworld](https://mathw
 
 In the first row of images, I am rendering the gear curves in 2D. In the first version, I am rendering 120 curves with 10 spokes and a = 1, b = 10 (which were the parameters suggested by Mathword). In the second version, I am rendering 30 curves with 6 spokes with a and b the same. In the third version, I am rendering 10 curves with 8 spokes with random a and b. In all versions, I vary the scale of the curves. If you open the link to the p5 sketch, it will rotate but I was not able to get a good GIF (they were too pixelated).
 
-In the second row, I have created some random tilings by creating a grid of gears and varying the parameters. I am using Daniel Shiffman's code from the [Lissajous Challenge](https://thecodingtrain.com/challenges/116-lissajous-curve-table) to create the grid.
+In the second row, I have created a grid of gears and varying the parameters to create a pattern. Note that this is not technically a tiling because the gears are overlapping. I am using Daniel Shiffman's code from the [Lissajous Challenge](https://thecodingtrain.com/challenges/116-lissajous-curve-table) to create the grid.
 
 In the third row, I am experimenting with 3D. In the first two images, I have adapted Daniel Shiffman's code from the [3d Supershape challenge](https://thecodingtrain.com/challenges/26-3d-supershapes) to create a 3d shape. The last image draws the gear in 3d by varying z when the curves are created.
 
@@ -66,5 +66,5 @@ To learn how to create a looping GIF, watch this short by [Daniel Siffman](https
 
 [p5.j sketch](https://editor.p5js.org/kfahn/sketches/_N3eGG5yQ)
 
-![](assets/tiling.gif)
-![](assets/tiling2.gif)
+![](assets/grid_animation.gif)
+![](assets/grid_aninmation2.gif)
