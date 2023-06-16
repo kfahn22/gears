@@ -36,6 +36,7 @@ class Gear {
   }
 
   // We need to loop through curve once before creating object
+  // You can obtain different looks by switching to hyperbolicSin()
   oneCurve() {
     for (let theta = 0; theta < 361; theta += 1) {
       // Equationss for gear curve
