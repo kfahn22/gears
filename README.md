@@ -10,7 +10,7 @@ I am using the formula for the gear curve from [Wolfram Mathworld](https://mathw
 `return (l - 1) / (l + 1);`  
 `}`
 
-In the first row of images, I am rendering the gear curves in 2D. In the first version, I am rendering 120 curves with 10 spokes and a = 1, b = 10 (which were the parameters suggested by Mathword). In the second version, I am rendering 30 curves with 6 spokes with a and b the same. In the third version, I am rendering 10 curves with 8 spokes with random a and b. In all versions, I vary the scale of the curves. If you open the link to the p5 sketch, it will rotate but I was not able to get a good GIF (they were too pixelated).
+In the first row of images, I am rendering the gear curves in 2D. In the first version, I am rendering 120 curves with 10 spokes and a = 1, b = 10 (which were the parameters suggested by Mathword). In the second version, I am rendering 30 curves with 6 spokes with a and b the same. In the third version, I am rendering 10 curves with 8 spokes with random a and b. In all versions, I vary the scale of the curves.
 
 In the second row, I have created a grid of gears and am varying the parameters to create a pattern. Note that this is not technically a tiling because the gears are overlapping. I am using Daniel Shiffman's code from the [Lissajous Challenge](https://thecodingtrain.com/challenges/116-lissajous-curve-table) to create the grid.
 
