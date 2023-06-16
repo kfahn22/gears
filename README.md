@@ -62,7 +62,7 @@ In the last row, I am renderig shader versions of the gear. The first image show
 
 ## Animations
 
-In the first two animations, the gear curves are rendered in a grid pattern and then the scale (or size) of the gear curves are changed to create the animation. I am using Daniel's trick to change the scale. To learn more about how to create a perfect GIF loop, watch Daniel Shiffman's short [p5.js saveGif() changes everything!](https://www.youtube.com/shorts/CEnfKhs6wLg).
+In the first two animations, the gear curves are rendered in a grid pattern and then the scale (or size) of the gear curves are changed to create the animation. I am using Daniel's trick to render the animation. To learn more about how to create a perfect GIF loop, watch Daniel Shiffman's short [p5.js saveGif() changes everything!](https://www.youtube.com/shorts/CEnfKhs6wLg).
 
 `inc += 360 / frames;`  
 `sc = map(sin(inc), -1, 1, 50, 150);`
