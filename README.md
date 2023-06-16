@@ -28,29 +28,29 @@ In the last row, I am renderig shader versions of the gear. The first image show
       <td align="center"><img class="img" src="assets/gear-2.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
      <td align="center"><a href="https://editor.p5js.org/kfahn/full/DBEYmRv_b"> <img class="img" src="assets/gear-3.jpg" alt="" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b>p5 sketch<br/></b></sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b>Random Rotating Gears<br/></b>p5 sketch</sub></a></td>
     </tr>
      <tr>
-      <td align="center"><a href="https://editor.p5js.org/kfahn/full/1iuRoYBcR"> <img class="img" src="assets/tile-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>p5 sketch<br/></b></sub></a></td>
-      <td align="center"><img class="img" src="assets/tile-2.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
-     <td align="center"><a href=""> <img class="img" src="assets/tile-3.jpg" alt="" style=" display: block;
+      <td align="center"><a href="https://editor.p5js.org/kfahn/full/1iuRoYBcR"> <img class="img" src="assets/grid-1.jpg" alt="overlapping grid" style="vertical-align:top;" width="500" /><br /><sub><b>Overlapping Grid<br/></b>p5 sketch</sub></a></td>
+      <td align="center"><img class="img" src="assets/grid-2.jpg" alt="overlapping grid" style="vertical-align:top;" width="500" /><br /><sub><b>Overlapping Grid<br/></b></sub></a></td>
+     <td align="center"><a href=""> <img class="img" src="assets/grid-3.jpg" alt="overlapping grid" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b><br/></b></sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b>Overlapping Grid<br/></b></sub></a></td>
     </tr>
     </tr>
      <tr>
-      <td align="center"><a href="https://editor.p5js.org/kfahn/full/Snumj-AgS"> <img class="img" src="assets/3d-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>p5 sketch<br/></b></sub></a></td>
-      <td align="center"><img class="img" src="assets/3d-2.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
+      <td align="center"><a href="https://editor.p5js.org/kfahn/full/Snumj-AgS"> <img class="img" src="assets/3d-1.jpg" alt="3D spherical shape" style="vertical-align:top;" width="500" /><br /><sub><b>3D spherical shape<br/></b>p5 sketch</sub></a></td>
+      <td align="center"><a href="https://editor.p5js.org/kfahn/sketches/YceFKpQ8F"><img class="img" src="assets/3d-2.jpg" alt="3D Geometry showing normals" style="vertical-align:top;" width="500" /><br /><sub><b>3D Geometry showing normals<br/></b>p5 sketch</sub></a></td>
      <td align="center"><a href=""> <img class="img" src="assets/3d-3.jpg" alt="" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b><br/></b></sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b>Gear curves rendered in 3D<br/></b></sub></a></td>
     </tr>
      <tr>
-      <td align="center"><a href=""> <img class="img" src="assets/shader-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>Shader<br/></b></sub></a></td>
+      <td align="center"><a href=""> <img class="img" src="assets/shader-1.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b>2D shape - shader<br/></b>p5 sketch</sub></a></td>
       <td align="center"><img class="img" src="assets/shader-2.jpg" alt="" style="vertical-align:top;" width="500" /><br /><sub><b><br/></b></sub></a></td>
      <td align="center"><a href="https://editor.p5js.org/kfahn/full/S8rDxeC1K"> <img class="img" src="assets/shader-3.jpg" alt="" style=" display: block;
     margin-left: auto;
-    margin-right: auto;" width="500" /><br /><sub><b>p5 sketch<br/></b></sub></a></td>
+    margin-right: auto;" width="500" /><br /><sub><b>3D shape - shader<br/></b>p5 sketch</sub></a></td>
     </tr>
   </tbody>
 </table>

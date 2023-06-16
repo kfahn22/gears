@@ -6,6 +6,9 @@
 // https://byjus.com/maths/hyperbolic-function/
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
 
+//  https://p5js.org/learn/getting-started-in-webgl-custom-geometry.html
+
+
 // Variations:
 // a = 1, b = 4; sc = 2, sp = 4 yields a "xmas-tree" topper like shape
 // a + (1 / b) * hyperbolicSin(b * sin(sp * theta));
@@ -19,6 +22,7 @@
 
 // adjusting total also yields some interesting results, but there is a
 // limit to how much you can increase total before the animation slows way down
+
 let ang = 0;
 let gears = [];
 let rotation = true;
