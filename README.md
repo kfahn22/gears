@@ -62,11 +62,18 @@ In the last row, I am renderig shader versions of the gear. The first image show
 
 ## Animations
 
-To learn how to create a perfect GIF loop, watch Daniel Shiffman's short [p5.js saveGif() changes everything!](https://www.youtube.com/shorts/CEnfKhs6wLg)
+In the first two animations, the gear curves are rendered in a grid pattern and then the scale (or size) of the gear curves are changed to create the animation. I am using Daniel's trick to change the scale. To learn more about how to create a perfect GIF loop, watch Daniel Shiffman's short [p5.js saveGif() changes everything!](https://www.youtube.com/shorts/CEnfKhs6wLg).
+
+`inc += 360 / frames;`  
+`sc = map(sin(inc), -1, 1, 50, 150);`
 
 [p5.j sketch](https://editor.p5js.org/kfahn/sketches/_N3eGG5yQ)
 
 ![](assets/grid_animation.gif)
-![](assets/grid_aninmation2.gif)
+![](assets/grid_animation2.gif)
+
+In the third animation, I replaced the hyperbolicTan() function with a the hyperbolicCos() function and am using the same trick to vary b. (The curve is not a gear.)
+
+`let r = a + (1 / b) * hyperbolicCos(b * sin(spokes * theta));`
 
 ![animation](https://github.com/kfahn22/gears/assets/65121394/d13a1863-0580-49e7-981c-b9d97ee94ad5)
