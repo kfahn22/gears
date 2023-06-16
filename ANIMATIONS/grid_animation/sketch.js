@@ -7,10 +7,10 @@ let gcurve = [];
 // a, b are parameters to the function to calculate radius
 const a = 1;
 const b = 10;
-let sc = 50; // scale
+let sc = 50; // scale // change to 80 for canvas dim (800, 400)
 let m = 4; // number of spokes
 let angle = 0;
-const w = 100;
+let w = 50; //use 80 for canvas dim (800, 400)
 let cols;
 let rows;
 let inc = -1;
@@ -31,7 +31,9 @@ function keyPressed() {
 }
 
 function setup() {
-  createCanvas(1000, 500);
+  createCanvas(500, 500);
+  //createCanvas(800, 400);
+
   cols = floor(width / w) - 1;
   rows = floor(height / w) - 1;
   angleMode(DEGREES);
@@ -39,14 +41,15 @@ function setup() {
 
 function draw() {
   background(87, 31, 78);
-  let c1 = color(146, 201, 177);
-  let c2 = color(87, 31, 78);
   let col = color(146, 201, 177);
 
+  // let c1 = color(146, 201, 177);
+  // let c2 = color(87, 31, 78);
   // setGradientL(0, 0, 500, 500, c1, c2, X_AXIS);
   // setGradientR(500, 0, 500, 500, c2, c1, X_AXIS);
 
-  let w = width / 5;
+  const w = width / 5;
+  //const w = width / 4; // use with canvas dim of 800, 400
 
   for (let i = 0; i < 1; i++) {
     gcurve.push(new Gear(width / 2, height / 2, a, b, sc, 30, col, 8));
@@ -55,8 +58,8 @@ function draw() {
   noFill();
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
-      let cx = -w + i * w + w / 2;
-      let cy = -w + j * w + w / 2;
+      let cx = w * (i - 1);
+      let cy = w * (j - 1);
       for (let i = 0; i < gcurve.length; i++) {
         push();
         translate(cx, cy);
@@ -67,7 +70,8 @@ function draw() {
     }
   }
   inc += 360 / frames;
-  sc = map(sin(inc), -1, 1, 100, 300);
+  sc = map(sin(inc), -1, 1, 50, 150);
+  //sc = map(sin(inc), -1, 1, 80, 240); //use with canvas dim of 800,400
   gcurve = [];
 }
 
