@@ -10,7 +10,7 @@ const b = 10;
 let sc = 50; // scale
 let m = 4; // number of spokes
 let angle = 0;
-const w = 50;
+const w = 100;
 let cols;
 let rows;
 let inc = -1;
@@ -31,7 +31,7 @@ function keyPressed() {
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(1000, 500);
   cols = floor(width / w) - 1;
   rows = floor(height / w) - 1;
   angleMode(DEGREES);
@@ -67,7 +67,7 @@ function draw() {
     }
   }
   inc += 360 / frames;
-  sc = map(sin(inc), -1, 1, 50, 150);
+  sc = map(sin(inc), -1, 1, 100, 300);
   gcurve = [];
 }
 
