@@ -77,3 +77,4 @@ In the third animation, I replaced the hyperbolicTan() function with a the hyper
 `let r = a + (1 / b) * hyperbolicCos(b * sin(spokes * theta));`
 
 ![animation](https://github.com/kfahn22/gears/assets/65121394/d13a1863-0580-49e7-981c-b9d97ee94ad5)
+[code](https://github.com/kfahn22/gears/tree/main/ANIMATIONS/animation_v1)
