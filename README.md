@@ -33,7 +33,7 @@ In the last row, I am renderig shader versions of the gear. The first image show
      <tr>
       <td align="center"><a href="https://editor.p5js.org/kfahn/full/1iuRoYBcR"> <img class="img" src="assets/grid-1.jpg" alt="overlapping grid" style="vertical-align:top;" width="500" /><br /><sub><b>Overlapping Grid<br/></b>p5 sketch</sub></a></td>
       <td align="center"><img class="img" src="assets/grid-2.jpg" alt="overlapping grid" style="vertical-align:top;" width="500" /><br /><sub><b>Overlapping Grid<br/></b></sub></a></td>
-     <td align="center"><a href="https://github.com/kfahn22/gears/tree/main/OVERLAPPING_GRIDS/overlapping_grid_v3"> <img class="img" src="assets/grid-4.jpg" alt="overlapping grid" style=" display: block;
+     <td align="center"><a href="https://editor.p5js.org/kfahn/sketches/KVyr6_EA7"> <img class="img" src="assets/grid-4.jpg" alt="overlapping grid" style=" display: block;
     margin-left: auto;
     margin-right: auto;" width="500" /><br /><sub><b>Overlapping Grid<br/></b></sub></a></td>
     </tr>
