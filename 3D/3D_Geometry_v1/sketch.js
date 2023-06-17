@@ -77,11 +77,16 @@ function draw() {
 
   noStroke();
   orbitControl();
-  // lights();
+
+  // We need two directional lights coming from opposite directions
+  // View the shape with normal material and you will see that the normals change
+  // with each band
+  // normalMaterial();
   directionalLight(128, 128, 128, 0, 0, -1);
   directionalLight(128, 128, 128, 0, 0, 1);
   ambientLight(79, 117, 155);
   ambientMaterial(79, 117, 155);
+
   push();
   rotateY((cos(millis() / 1000) * PI) / 4);
   model(myGeometry);
