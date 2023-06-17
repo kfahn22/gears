@@ -14,7 +14,7 @@ In the first row of images, I am rendering the gear curves in 2D. In the first v
 
 In the second row, I have created a grid of gears and am varying the parameters to create a pattern. Note that this is not technically a tiling because the gears are overlapping. I am using Daniel Shiffman's code from the [Lissajous Challenge](https://thecodingtrain.com/challenges/116-lissajous-curve-table) to create the grid.
 
-In the third row, I am experimenting with 3D. In the first two images, I have adapted Daniel Shiffman's code from the [3d Supershape challenge](https://thecodingtrain.com/challenges/26-3d-supershapes) to create a 3d shape. The last image draws the gear in 3d by varying z when the curves are created.
+In the third row, I am experimenting with 3D. In the first two images, I have adapted Daniel Shiffman's code from the [3d Supershape challenge](https://thecodingtrain.com/challenges/26-3d-supershapes) to create a 3d shape. The first one uses beginShape() and endShape() with triangle strips, while the second one uses the [p5.Geometry](https://p5js.org/learn/getting-started-in-webgl-custom-geometry.html). The last image draws the gear in 3d by varying z when the curves are created.
 
 In the last row, I am renderig shader versions of the gear. The first image shows a solid 2D gear, the second is a mix of the gear and a cube, and the third is a mix of the gear and a sphere. If you would like to learn more about mixing shapes, I recommend watching The Art of Code's Martijn Steinrucken youtube tutorial [How to turn your 2d fractal into 3d!](https://www.youtube.com/watch?v=__dSLc7-Cpo).
 
