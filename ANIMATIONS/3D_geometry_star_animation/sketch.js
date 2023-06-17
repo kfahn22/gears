@@ -6,19 +6,6 @@
 // https://byjus.com/maths/hyperbolic-function/
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
 
-// Variations:
-// a = 1, b = 4; sc = 2, sp = 4 yields a "xmas-tree" topper like shape
-// a + (1 / b) * hyperbolicSin(b * sin(sp * theta));
-// If sp = 8, 16 get some different fun shapes
-
-// a = 1, b = 4; sc = 80, sp = 4 yields a folded paper like shape
-// a + (1 / b) * hyperbolicTan(b * cos(sp * theta))
-
-// a = 1, b = 4, sc = 80, sp = 16 yields a folded structure with rounded edges
-// return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
-
-// adjusting total also yields some interesting results, but there is a
-// limit to how much you can increase total before the animation slows way down
 let ang = -1;
 let rotation = true;
 let num;
@@ -28,7 +15,6 @@ let myGeometry;
 const detailX = 16;
 const detailY = 16;
 const frames = 180;
-// let inc = -1;
 
 function keyPressed() {
   if (key == "s") {
@@ -68,7 +54,7 @@ function draw() {
   background(22, 16, 50);
   rotateX(ang);
   rotateY(ang);
-  rotateZ(ang);
+  //rotateZ(ang);
 
   noStroke();
 
