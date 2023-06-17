@@ -72,7 +72,11 @@ In the first two animations, the gear curves are rendered in a grid pattern and 
 ![](assets/grid_animation.gif)
 ![](assets/grid_animation2.gif)
 
-In the third animation, I replaced the hyperbolicTan() function with a the hyperbolicCos() function and am using the same trick to vary b. (The curve is not a gear.)
+In this animation, I am using p5.Geometry to create this cray star shape that reminds me of origami. 
+ 
+![](assets/star.gif)
+
+In the fourth animation, I replaced the hyperbolicTan() function with a the hyperbolicCos() function and am using the same trick to vary b. (The curve is not a gear.)
 
 `let r = a + (1 / b) * hyperbolicCos(b * sin(spokes * theta));`
 
