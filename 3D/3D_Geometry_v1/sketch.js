@@ -13,7 +13,7 @@ let ang = 0;
 let rotation = true;
 const detailX = 47; // must be odd
 const detailY = 47;
-const sc = 150;
+const sc = 130;
 // gear curve parameters -- changing will yield different shapes
 // a = 1, b = 10 were the values given on Mathworld
 const a = 1; // keep this = 1
@@ -32,12 +32,10 @@ function setup() {
       for (let j = 0; j < detailY + 1; j++) {
         let lon = map(j, 0, detailY, -PI, PI);
         let r1 = gear(lon, a, b);
-        // let ll = lat + lon;
-        // let r = gear(ll, a, b);
         let x = sc * r1 * cos(lon) * r2 * sin(lat);
         let y = sc * r1 * sin(lon) * r2 * sin(lat);
+        //let z = sc * ((r1 + r2) * cos(lat)); // get an football-like shape
         let z = sc * (r2 * cos(lat));
-        // let z = r * sc * (r2 * cos(lat));
         this.vertices.push(new p5.Vector(x, y, z));
       }
     }
@@ -76,6 +74,9 @@ function draw() {
   rotateZ(ang);
 
   noStroke();
+
+  // orbitControl allows us to track with the mouse
+  //https://p5js.org/reference/#/p5/orbitControl
   orbitControl();
 
   // We need two directional lights coming from opposite directions
