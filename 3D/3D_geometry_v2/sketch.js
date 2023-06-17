@@ -1,79 +1,95 @@
+// See https://github.com/kfahn22/gears for other gear curve sketches
+
 // The spherical code is based on Daniel Shiffman's 3d-supershapes challenge
 // https://thecodingtrain.com/challenges/26-3d-supershapes
-// I don't know what to call this shape
-
+// Reference for gear curve https://mathworld.wolfram.com/GearCurve.html
 // Reference for hyperbolic functions
 // https://byjus.com/maths/hyperbolic-function/
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
+// Reference for how to create p5 geometry
+// https://p5js.org/learn/getting-started-in-webgl-custom-geometry.html
 
-// Variations:
-// a = 1, b = 4; sc = 2, sp = 4 yields a "xmas-tree" topper like shape
-// a + (1 / b) * hyperbolicSin(b * sin(sp * theta));
-// If sp = 8, 16 get some different fun shapes
-
-// a = 1, b = 4; sc = 80, sp = 4 yields a folded paper like shape
-// a + (1 / b) * hyperbolicTan(b * cos(sp * theta))
-
-// a = 1, b = 4, sc = 80, sp = 16 yields a folded structure with rounded edges
-// return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
-
-// adjusting total also yields some interesting results, but there is a
-// limit to how much you can increase total before the animation slows way down
 let ang = 0;
-let gears = [];
 let rotation = true;
-let total = 16;
-let num;
-let sc = 3;
-let sp = 8; // number of spokes
+const detailX = 75; // must be odd
+const detailY = 75;
+const sc = 130;
+// gear curve parameters -- changing will yield different shapes
+// a = 1, b = 10 were the values given on Mathworld
+const a = 1; // keep this = 1
+const b = 10;
+const sp = 10; // number of spokes
 let myGeometry;
-let detailX = 16;
-let detailY = 16;
 
 function setup() {
   createCanvas(600, 600, WEBGL);
   pixelDensity(1);
+
   myGeometry = new p5.Geometry(detailX, detailY, function () {
     for (let i = 0; i < detailX + 1; i++) {
-      gears[i] = [];
-      let lat = map(i, 0, detailX, 0, TWO_PI);
-      let r2 = gear(lat);
+      let lat = map(i, 0, detailX, -PI, PI);
+      let r2 = gear(lat, a, b);
       for (let j = 0; j < detailY + 1; j++) {
         let lon = map(j, 0, detailY, -PI, PI);
-        let r1 = gear(lon);
-        let r = gear(lat + lon);
+        let r1 = gear(lon, a, b);
         let x = sc * r1 * cos(lon) * r2 * sin(lat);
         let y = sc * r1 * sin(lon) * r2 * sin(lat);
-        //let z = r + sc * (r2 * cos(lat)); // change sin(lat) to cos(lat) get two
-        let z = r - sc * (r1 * cos(lon));
-        this.vertices.push(createVector(x, y, z));
+        //let z = sc * ((r1 + r2) * cos(lat)); // get an football-like shape
+        let z = sc * (r2 * cos(lat));
+        this.vertices.push(new p5.Vector(x, y, z));
       }
-    } // this will attach all our vertices and create faces automatically
+    }
+    // this will attach all our vertices and create faces automatically
     this.computeFaces();
     // this will calculate the normals to help with lighting
     this.computeNormals();
+
+    // This is a bit of trouble-shooting code writtem by Dave Pagurek
+    // I was getting an error when I had the detailX,Y set to an even number
+    // https://github.com/processing/p5.js/issues/4791#issuecomment-1595003663
+    // p5.Geometry.prototype._getFaceNormal = function (faceId) {
+    //   //This assumes that vA->vB->vC is a counter-clockwise ordering
+    //   const face = this.faces[faceId];
+    //   const vA = this.vertices[face[0]];
+    //   const vB = this.vertices[face[1]];
+    //   const vC = this.vertices[face[2]];
+    //   const ab = p5.Vector.sub(vB, vA);
+    //   const ac = p5.Vector.sub(vC, vA);
+    //   const n = p5.Vector.cross(ab, ac);
+    //   if (n.x === 0 && n.y === 0 && n.z === 0) {
+    //     console.warn(
+    //       "p5.Geometry.prototype._getFaceNormal:",
+    //       "face has colinear sides or a repeated vertex"
+    //     );
+    //   }
+    //   return n;
+    // };
   });
 }
 
 function draw() {
-  background(100);
+  background(87, 31, 78);
   rotateX(ang);
   rotateY(ang);
   rotateZ(ang);
 
   noStroke();
 
+  // orbitControl allows us to track with the mouse
+  //https://p5js.org/reference/#/p5/orbitControl
   orbitControl();
-  fill(93, 81, 121);
-  //set a basic light to see that normals are calculated
-  pointLight(255, 255, 255, 0, 50, -50);
-  specularMaterial(146, 201, 177);
+
+  // We need two directional lights coming from opposite directions
+  // View the shape with normal material and you will see that the normals change
+  // with each band
+  // normalMaterial();
+  directionalLight(128, 128, 128, 0, 0, -1);
+  directionalLight(128, 128, 128, 0, 0, 1);
+  ambientLight(146, 201, 177);
+  ambientMaterial(146, 201, 177);
+
   push();
-  //stroke(128);
-  let geoSize = width / 2;
   rotateY((cos(millis() / 1000) * PI) / 4);
-  //translate(-width / 2, -width / 2);
-  //scale(sc);
   model(myGeometry);
   pop();
 
@@ -82,25 +98,6 @@ function draw() {
   }
 }
 
-function hyperbolicTan(theta) {
-  let e = 2.71828;
-  let l = pow(e, 2 * theta);
-  return (l - 1) / (l + 1);
-}
-
-function hyperbolicCot(theta) {
-  let e = 2.71828;
-  let k = pow(e, theta);
-  let l = pow(e, -theta);
-  return (k + l) / (k - l);
-}
-
-function hyperbolicSin(theta) {
-  let e = 2.71828;
-  let k = pow(e, theta);
-  let l = pow(e, -theta);
-  return (k - l) / 2;
-}
 function hyperbolicCos(theta) {
   let e = 2.71828;
   let k = pow(e, theta);
@@ -108,16 +105,10 @@ function hyperbolicCos(theta) {
   return (k + l) / 2;
 }
 
-// Function to calculate r1, r2
-function gear(theta) {
-  let a = 1;
-  let b = 4; // changing this value yields a very different shape
-
-  // Equation for the radius
-
-  //return a + (1 / b) * hyperbolicTan(b * cos(sp * theta));
-  return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
-  // return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
+// Function to calculate r1, r2, r
+function gear(theta, a, b) {
+  // Equation for the gear curve
+  return a + (1 / b) * hyperbolicCos(sin(sp * theta));
 }
 
 function mousePressed() {
