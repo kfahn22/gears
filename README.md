@@ -14,7 +14,12 @@ In the first row of images, I am rendering the gear curves in 2D. In the first v
 
 In the second row, I have created a grid of gears and am varying the parameters to create a pattern. Note that this is not technically a tiling because the gears are overlapping. I am using Daniel Shiffman's code from the [Lissajous Challenge](https://thecodingtrain.com/challenges/116-lissajous-curve-table) to create the grid.
 
-In the third row, I am experimenting with 3D. In the first two images, I have adapted Daniel Shiffman's code from the [3d Supershape challenge](https://thecodingtrain.com/challenges/26-3d-supershapes) to create a 3d shape. The first one uses beginShape() and endShape() with triangle strips, while the second one uses the [p5.Geometry](https://p5js.org/learn/getting-started-in-webgl-custom-geometry.html). The last image draws the gear in 3D by varying z when the curves are created.
+In the third row, I am experimenting with 3D. In the first two images, I have adapted Daniel Shiffman's code from the [3d Supershape challenge](https://thecodingtrain.com/challenges/26-3d-supershapes) to create a 3d shape. The first one uses beginShape() and endShape() with triangle strips, while the second one uses the [p5.Geometry](https://p5js.org/learn/getting-started-in-webgl-custom-geometry.html). The stripes are created by adding two directional lights coming from opposite directions with different colors.
+
+`directionalLight(146, 201, 177, 0, 0, -1);`  
+`directionalLight(93, 81, 121, 0, 0, 1);`
+
+The last image draws the gear in 3D by varying z when the curves are created.
 
 In the last row, I am renderig shader versions of the gear. The first image shows a solid 2D gear, the second is a mix of the gear and a cube, and the third is a mix of the gear and a sphere. If you would like to learn more about mixing shapes, I recommend watching The Art of Code's Martijn Steinrucken youtube tutorial [How to turn your 2d fractal into 3d!](https://www.youtube.com/watch?v=__dSLc7-Cpo).
 
@@ -40,7 +45,7 @@ In the last row, I am renderig shader versions of the gear. The first image show
     </tr>
      <tr>
       <td align="center"><a href="https://editor.p5js.org/kfahn/full/Snumj-AgS"> <img class="img" src="assets/3d-1.jpg" alt="3D spherical shape" style="vertical-align:top;" width="500" /><br /><sub><b>3D spherical shape<br/></b>p5 sketch</sub></a></td>
-      <td align="center"><a href="https://editor.p5js.org/kfahn/sketches/YceFKpQ8F"><img class="img" src="assets/3d-geometry.jpg" alt="3D Geometry" style="vertical-align:top;" width="500" /><br /><sub><b>3D Geometry<br/></b>p5 sketch</sub></a></td>
+      <td align="center"><a href="https://editor.p5js.org/kfahn/sketches/YceFKpQ8F"><img class="img" src="assets/3d-striped.jpg" alt="striped 3D Geometry" style="vertical-align:top;" width="500" /><br /><sub><b>3D Geometry<br/></b>p5 sketch</sub></a></td>
      <td align="center"><a href="https://editor.p5js.org/kfahn/sketches/sI7UvptoV"> <img class="img" src="assets/3d-3.jpg" alt="" style=" display: block;
     margin-left: auto;
     margin-right: auto;" width="500" /><br /><sub><b>Gear curves rendered in 3D<br/></b>p5 sketch</sub></a></td>
@@ -72,15 +77,15 @@ In the first two animations, the gear curves are rendered in a grid pattern and 
 ![](assets/grid_animation.gif)
 ![](assets/grid_animation2.gif)
 
-In this animation, I am using p5.Geometry to create this crazy star shape that reminds me of origami.
-
-![](assets/star.gif)  
-[code](ANIMATIONS/3D_geometry_star_animation)
-
-In the fourth animation, I replaced the hyperbolicTan() function with a the hyperbolicCos() function and am using the same trick to vary b. (The curve is not a gear.)
+In the third animation, I replaced the hyperbolicTan() function with a the hyperbolicCos() function and am using the same trick to vary b. (The curve is not a gear.)
 
 `let r = a + (1 / b) * hyperbolicCos(b * sin(spokes * theta));`
 
 ![animation](https://github.com/kfahn22/gears/assets/65121394/d13a1863-0580-49e7-981c-b9d97ee94ad5)
 
 [code](https://github.com/kfahn22/gears/tree/main/ANIMATIONS/animation_v1)
+
+In this animation, I am using p5.Geometry to create this crazy star shape that reminds me of origami. 
+
+![](assets/star.gif)  
+[code](ANIMATIONS/3D_geometry_star_animation)

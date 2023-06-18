@@ -6,25 +6,24 @@
 // https://byjus.com/maths/hyperbolic-function/
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
 
-let ang = -1;
+// a = 1, b = 4; sc = 80, sp = 4 yields a folded paper like shape
+// a + (1 / b) * hyperbolicTan(b * cos(sp * theta))
+
+// a = 1, b = 4, sc = 80, sp = 16 yields a folded structure with rounded edges
+// return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
+
+// adjusting total also yields some interesting results, but there is a
+// limit to how much you can increase total before the animation slows way down
+let ang = 0;
 let rotation = true;
 let num;
-const sc = 3;
-const sp = 8; // number of spokes
+const sc = 80;
+const sp = 4; // number of spokes
 let myGeometry;
-const detailX = 16;
-const detailY = 16;
-const frames = 180;
+const detailX = 32;
+const detailY = 32;
+let img;
 
-function keyPressed() {
-  if (key == "s") {
-    const options = {
-      units: "frames",
-      delay: 0,
-    };
-    saveGif("GIF/star.gif", frames, options);
-  }
-}
 
 function setup() {
   createCanvas(600, 600, WEBGL);
@@ -51,27 +50,41 @@ function setup() {
 }
 
 function draw() {
-  background(22, 16, 50);
+  background(146, 201, 177);
   rotateX(ang);
   rotateY(ang);
-  //rotateZ(ang);
+  rotateZ(ang);
 
   noStroke();
 
   orbitControl();
   directionalLight(128, 128, 128, 0, 0, -1);
   directionalLight(128, 128, 128, 0, 0, 1);
-  ambientLight(255, 197, 58);
-  ambientMaterial(255, 197, 58);
-  //normalMaterial();
+  ambientLight(79, 117, 155);
+  ambientMaterial(79, 117, 155);
+
   push();
 
+  rotateY((cos(millis() / 1000) * PI) / 4);
   model(myGeometry);
   pop();
 
   if (rotation) {
-    ang += TWO_PI / frames;
+    ang += 0.01;
   }
+}
+
+function hyperbolicTan(theta) {
+  let e = 2.71828;
+  let l = pow(e, 2 * theta);
+  return (l - 1) / (l + 1);
+}
+
+function hyperbolicCot(theta) {
+  let e = 2.71828;
+  let k = pow(e, theta);
+  let l = pow(e, -theta);
+  return (k + l) / (k - l);
 }
 
 function hyperbolicSin(theta) {
@@ -80,15 +93,24 @@ function hyperbolicSin(theta) {
   let l = pow(e, -theta);
   return (k - l) / 2;
 }
+function hyperbolicCos(theta) {
+  let e = 2.71828;
+  let k = pow(e, theta);
+  let l = pow(e, -theta);
+  return (k + l) / 2;
+}
 
 // Function to calculate r1, r2
 function gear(theta) {
   let a = 1;
-  let b = 4;
+  let b = 4; // changing this value yields a very different shape
+
   // Equation for the radius
-  return a + (1 / b) * hyperbolicSin(b * cos(sp * theta));
+  return a + (1 / b) * hyperbolicTan(b * cos(sp * theta));
+
+  //return a + (1 / b) * hyperbolicCot(b * cos(sp * theta));
 }
 
 function mousePressed() {
-  save("star.jpg");
+  save("3dshape.jpg");
 }
