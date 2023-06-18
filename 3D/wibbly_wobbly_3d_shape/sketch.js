@@ -9,6 +9,8 @@
 // Reference for how to create p5 geometry
 // https://p5js.org/learn/getting-started-in-webgl-custom-geometry.html
 
+// https://github.com/davepagurek/p5.warp/blob/main/examples/sketch.js
+
 let ang = 0;
 let rotation = true;
 const detail = 47; // must be odd
@@ -17,21 +19,52 @@ const sc = 150;
 // a = 1, b = 10 were the values given on Mathworld
 const a = 1; // keep this = 1
 const b = 10;
-const sp = 8; // number of spokes
+const sp = 4; // number of spokes
 let myGeometry;
+// parameters for warp
+let distort;
+let twist;
+let warpPicker;
 
 function setup() {
   createCanvas(600, 600, WEBGL);
   pixelDensity(1);
   //github.com/davepagurek/p5.warp
-  https: distort = createWarp(({ glsl, millis, position }) => {
-    const t = millis.div(1000);
-    return glsl.vec3(
-      t.mult(2).add(position.y().mult(4)).sin().mult(0.15),
-      t.mult(0.5).add(position.z().mult(2)).sin().mult(0.15),
-      t.mult(1.5).add(position.x().mult(3)).sin().mult(0.15)
-    );
-  });
+  distort = createWarp(
+    ({ glsl, millis, position }) => {
+      const t = millis.div(1000);
+      return glsl.vec3(
+        t.mult(2).add(position.y().mult(0.04)).sin().mult(15),
+        t.mult(0.5).add(position.z().mult(0.02)).sin().mult(15),
+        t.mult(1.5).add(position.x().mult(0.03)).sin().mult(15)
+      );
+    },
+    { space: "world" }
+  );
+
+  twist = createWarp(
+    ({ glsl, millis, position }) => {
+      const center = glsl.vec3(0, 0, -500);
+      const rotateX = (pos, angle) => {
+        const sa = glsl.sin(angle);
+        const ca = glsl.cos(angle);
+        return glsl.vec3(
+          pos.x(),
+          pos.y().mult(ca).sub(pos.z().mult(sa)),
+          pos.y().mult(sa).add(pos.z().mult(ca))
+        );
+      };
+
+      const normPosition = position.sub(center);
+      const rotated = rotateX(
+        normPosition,
+        position.x().mult(0.02).add(millis.div(1000))
+      );
+      return rotated.sub(normPosition);
+    },
+    { space: "world" }
+  );
+
   myGeometry = new p5.Geometry(detail, detail, function () {
     for (let k = 0; k < detail + 1; k++) {
       for (let j = 0; j < detail + 1; j++) {
@@ -80,7 +113,9 @@ function draw() {
   // If we add different colors to each directional light, we get stripes
   directionalLight(146, 201, 177, 0, 0, -1);
   directionalLight(93, 81, 121, 0, 0, 1);
-  distort(); 
+
+  distort();
+
   push();
   rotateY((cos(millis() / 1000) * PI) / 4);
 
