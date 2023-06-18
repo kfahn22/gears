@@ -16,6 +16,7 @@ const sp = 16; // number of spokes
 let myGeometry;
 const detailX = 16;
 const detailY = 16;
+let img;
 
 function setup() {
   createCanvas(600, 600, WEBGL);

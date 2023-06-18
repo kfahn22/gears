@@ -22,6 +22,8 @@ const sp = 4; // number of spokes
 let myGeometry;
 const detailX = 32;
 const detailY = 32;
+let img;
+
 
 function setup() {
   createCanvas(600, 600, WEBGL);
@@ -60,11 +62,10 @@ function draw() {
   directionalLight(128, 128, 128, 0, 0, 1);
   ambientLight(79, 117, 155);
   ambientMaterial(79, 117, 155);
-  //normalMaterial();
+
   push();
 
   rotateY((cos(millis() / 1000) * PI) / 4);
-
   model(myGeometry);
   pop();
 
