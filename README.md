@@ -77,15 +77,15 @@ In the first two animations, the gear curves are rendered in a grid pattern and 
 ![](assets/grid_animation.gif)
 ![](assets/grid_animation2.gif)
 
-In this animation, I am using p5.Geometry to create this crazy star shape that reminds me of origami.
-
-![](assets/star.gif)  
-[code](ANIMATIONS/3D_geometry_star_animation)
-
-In the fourth animation, I replaced the hyperbolicTan() function with a the hyperbolicCos() function and am using the same trick to vary b. (The curve is not a gear.)
+In the third animation, I replaced the hyperbolicTan() function with a the hyperbolicCos() function and am using the same trick to vary b. (The curve is not a gear.)
 
 `let r = a + (1 / b) * hyperbolicCos(b * sin(spokes * theta));`
 
 ![animation](https://github.com/kfahn22/gears/assets/65121394/d13a1863-0580-49e7-981c-b9d97ee94ad5)
 
 [code](https://github.com/kfahn22/gears/tree/main/ANIMATIONS/animation_v1)
+
+In this animation, I am using p5.Geometry to create this crazy star shape that reminds me of origami. 
+
+![](assets/star.gif)  
+[code](ANIMATIONS/3D_geometry_star_animation)
