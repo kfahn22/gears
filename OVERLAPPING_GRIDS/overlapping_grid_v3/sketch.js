@@ -7,7 +7,7 @@ const gcurve = [];
 // a, b are parameters to the function to calculate radius
 const a = 1;
 const b = 1;
-let m = 6; //10  try changing the number of spokes to get different visualizations
+let spokes = 6; //10  try changing the number of spokes to get different visualizations
 let sc;
 let angle = 0;
 const w = 50;
@@ -22,7 +22,7 @@ function setup() {
   let col = color(255);
   for (let i = 0; i < 1; i++) {
     gcurve.push(
-      new Gear(width / 2, height / 2, 1, 10, random(50, 250), 30, col, m)
+      new Gear(width / 2, height / 2, 1, 10, random(50, 250), 30, col, spokes)
     );
   }
 }
@@ -52,11 +52,11 @@ function draw() {
   }
 }
 
-function hyperbolicTan(theta) {
-  let e = 2.71828;
-  let l = pow(e, 2 * theta);
-  return (l - 1) / (l + 1);
-}
+// function hyperbolicTan(theta) {
+//   let e = 2.71828;
+//   let l = pow(e, 2 * theta);
+//   return (l - 1) / (l + 1);
+// }
 
 function mousePressed() {
   save("tile.jpg");
