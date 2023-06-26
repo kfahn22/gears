@@ -6,70 +6,69 @@
 // Reference for hyperbolic functions
 // https://byjus.com/maths/hyperbolic-function/
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
-// Reference for how to create p5 geometry
+
+// Instead of using beginShape(), endShape(), vertex() we use the p5.Geometry class to handle the vertices.
+
+// Reference for how to use p5 geometry
 // https://p5js.org/learn/getting-started-in-webgl-custom-geometry.html
 
 let ang = 0;
 let rotation = true;
-const detail = 47; // must be odd
-const sc = 150;
+
+const detail = 75;
+const sc = 120;
 // gear curve parameters -- changing will yield different shapes
 // a = 1, b = 10 were the values given on Mathworld
 const a = 1; // keep this = 1
 const b = 10;
-const sp = 8; // number of spokes
+// with odd number of spokes, color bands are offset,
+// with even number, spokes are aligned.
+const spokes = 11; // number of spokes
 let myGeometry;
 
 function setup() {
-  createCanvas(600, 600, WEBGL);
+  createCanvas(800, 450, WEBGL);
+  //createCanvas(600, 600, WEBGL);
   pixelDensity(1);
-  //github.com/davepagurek/p5.warp
-  https: distort = createWarp(({ glsl, millis, position }) => {
-    const t = millis.div(1000);
-    return glsl.vec3(
-      t.mult(2).add(position.y().mult(4)).sin().mult(0.15),
-      t.mult(0.5).add(position.z().mult(2)).sin().mult(0.15),
-      t.mult(1.5).add(position.x().mult(3)).sin().mult(0.15)
-    );
-  });
+
   myGeometry = new p5.Geometry(detail, detail, function () {
-    for (let k = 0; k < detail + 1; k++) {
+    for (let i = 0; i < detail + 1; i++) {
+      let lat = map(i, 0, detail, -PI, PI);
+      // I had to play around with the values of b to get the middle band color consistent
+      // if b >9, the color will be messed up
+      let r2 = gear(lat, 1, 4);
       for (let j = 0; j < detail + 1; j++) {
-        let lat = map(j, 0, detail, -PI, PI);
-        let r2 = gear(lat, a, b);
-        for (let i = 0; i < detail + 1; i++) {
-          let lon = map(i, 0, detail, -PI, PI);
-          let r1 = gear(lon, a, b);
-          let x = sc * r1 * cos(lon) * r2 * sin(lat);
-          let y = sc * r1 * sin(lon) * r2 * sin(lat);
-          //let z = sc * ((r1 + r2) * cos(lat)); // get an football-like shape
-          let z = sc * (r2 * cos(lat));
-          this.vertices.push(new p5.Vector(x, y, z));
-        }
+        let lon = map(j, 1, detail - 1, -PI, PI);
+        let r1 = gear(lon, 1, 10);
+
+        let x = sc * r1 * cos(lon) * r2 * sin(lat);
+        let y = sc * r1 * sin(lon) * r2 * sin(lat);
+        let z = sc * (r2 * cos(lat));
+        this.vertices.push(new p5.Vector(x, y, z));
       }
     }
-    // // this will attach all our vertices and create faces automatically
+    // this will attach all our vertices and create faces automatically
     this.computeFaces();
-    // // this will calculate the normals to help with lighting
+    // this will calculate the normals to help with lighting
     this.computeNormals();
-    // this.normalize();
-    // this.averageNormals();
-    // this.averagePoleNormals();
+    this.averageNormals();
+    this.averagePoleNormals();
   });
 }
 
 function draw() {
-  background(79, 117, 155);
+  background(87, 31, 78);
   rotateX(ang);
   rotateY(ang);
   rotateZ(ang);
 
   noStroke();
 
-  // orbitControl allows us to track with the mouse
+  // orbitControl allows us to control shape with the mouse
   //https://p5js.org/reference/#/p5/orbitControl
   orbitControl();
 
+  // We need two directional lights coming from opposite directions
   // View the shape with normal material and you will see that the normals change with each band
   // normalMaterial();
   // directionalLight(128, 128, 128, 0, 0, -1);
@@ -79,11 +78,9 @@ function draw() {
 
   // If we add different colors to each directional light, we get stripes
   directionalLight(146, 201, 177, 0, 0, -1);
-  directionalLight(93, 81, 121, 0, 0, 1);
-  distort(); 
+  directionalLight(79, 117, 155, 0, 0, 1);
   push();
   rotateY((cos(millis() / 1000) * PI) / 4);
-
   model(myGeometry);
   pop();
 
@@ -98,17 +95,10 @@ function hyperbolicTan(theta) {
   return (l - 1) / (l + 1);
 }
 
-// Function to calculate r
+// Function to calculate r1, r2
 function gear(theta, a, b) {
   // Equation for the gear curve
-  return a + (1 / b) * hyperbolicTan(b * sin(sp * theta));
-}
-
-function spherical(x, y, z) {
-  let theta = atan2(sqrt(x * x + y * y), z);
-  let r = gear(theta, a, b);
-  let phi = atan(y, x);
-  return r;
+  return a + (1 / b) * hyperbolicTan(b * sin(spokes * theta));
 }
 
 function mousePressed() {
