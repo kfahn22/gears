@@ -3,16 +3,27 @@
 // Gear curve equation from Wolfram Alpha
 // https://mathworld.wolfram.com/GearCurve.html
 
-const gcurve = [];
+let gcurve = [];
 // a, b are parameters to the function to calculate radius
 const a = 1;
 const b = 1;
-let spokes = 6; //10  try changing the number of spokes to get different visualizations
-let sc;
-let angle = 0;
+const m = 10; // number of spokes
+let sc = 50;
 const w = 50;
 let cols;
 let rows;
+let inc = -1;
+const frames = 120;
+
+function keyPressed() {
+  if (key == "s") {
+    const options = {
+      units: "frames",
+      delay: 0,
+    };
+    saveGif("GIF/grid.gif", frames, options);
+  }
+}
 
 function setup() {
   createCanvas(500, 500);
@@ -22,7 +33,7 @@ function setup() {
   let col = color(255);
   for (let i = 0; i < 1; i++) {
     gcurve.push(
-      new Gear(width / 2, height / 2, 1, 10, random(50, 250), 30, col, spokes)
+      new Gear(width / 2, height / 2, a, b, random(25, 75), 30, col, m)
     );
   }
 }
@@ -52,11 +63,11 @@ function draw() {
   }
 }
 
-// function hyperbolicTan(theta) {
-//   let e = 2.71828;
-//   let l = pow(e, 2 * theta);
-//   return (l - 1) / (l + 1);
-// }
+function hyperbolicTan(theta) {
+  let e = 2.71828;
+  let l = pow(e, 2 * theta);
+  return (l - 1) / (l + 1);
+}
 
 function mousePressed() {
   save("tile.jpg");

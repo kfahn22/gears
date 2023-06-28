@@ -1,32 +1,20 @@
-// https://mathworld.wolfram.com/GearCurve.html
+/// https://mathworld.wolfram.com/GearCurve.html
 // https://help.tc2000.com/m/69445/l/755460-hyperbolic-functions-table
 
 class Gear {
-  constructor(_px, _py, _a, _b, _sc, _rot, _c, _sp) {
+  constructor(_px, _py, _a, _b, _sc, _rot, _c, _m) {
     this.px = _px;
     this.py = _py;
     this.a = _a;
     this.b = _b;
-    this.sp = _sp;
+    this.m = _m;
     this.sc = _sc;
     this.points = [];
     this.rot = _rot;
     this.c = _c;
     this.col = color(this.c);
   }
-  hyperbolicCot(theta) {
-    let e = 2.71828;
-    let k = pow(e, theta);
-    let l = pow(e, -theta);
-    return (k + l) / (k - l);
-  }
 
-  hyperbolicSin(theta) {
-    let e = 2.71828;
-    let k = pow(e, theta);
-    let l = pow(e, -theta);
-    return (k - l) / 2;
-  }
   hyperbolicCos(theta) {
     let e = 2.71828;
     let k = pow(e, theta);
@@ -35,7 +23,6 @@ class Gear {
   }
 
   // We need to loop through curve once before creating object
-  // You can obtain different looks by switching to hyperbolicSin()
   oneCurve() {
     for (let theta = 0; theta < 361; theta += 1) {
       // Equationss for gear curve
