@@ -72,7 +72,7 @@ function hyperbolicTan(theta) {
 }
 
 function mousePressed() {
-  save("tile.jpg");
+  save("grid.jpg");
 }
 
 function setGradientL(x, y, w, h, c1, c2, axis) {

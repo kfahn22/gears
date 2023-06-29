@@ -58,5 +58,5 @@ function hyperbolicTan(theta) {
 }
 
 function mousePressed() {
-  save("tile.jpg");
+  save("grid.jpg");
 }
